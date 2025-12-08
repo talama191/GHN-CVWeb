@@ -53,24 +53,46 @@ nav a {
     /* Hide scrollbar for cleaner look */
     scrollbar-width: none; 
 }
-.gallery-row::-webkit-scrollbar { display: none; }
 
-.gallery-item {
-    flex: 0 0 auto;
-    width: 150px;
-    height: 150px;
-    background-color: #ddd;
-    border-radius: 12px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
+/* Container for the row */
+.gallery-row {
+    display: flex;
+    align-items: center; /* This centers items vertically (tall vs short) */
+    gap: 30px;           /* Space between the images */
+    overflow-x: auto;    /* Allows scrolling sideways if they overflow */
+    padding: 20px 0;     /* Breathing room on top/bottom */
+    
+    /* Hide scrollbar for a cleaner look (optional) */
+    scrollbar-width: none; 
 }
-/* Simulating the colored cards from image */
-.g-1 { background-color: #333; }
-.g-2 { background-color: #ccc; }
-.g-3 { background-color: #e76f51; }
-.g-4 { background-color: #f4a261; }
-.g-5 { background-color: #e9c46a; }
+.gallery-row::-webkit-scrollbar { 
+    display: none; 
+}
+
+/* Individual wrapper */
+.gallery-item {
+    flex: 0 0 auto;      /* Ensures items don't shrink */
+    position: relative;
+    border-radius: 20px; /* Matches the rounded corners in your image */
+    overflow: hidden;    /* Ensures the image stays inside the rounded corners */
+    
+    /* Optional: Adds a subtle shadow like the screenshot */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
+    
+    /* REMOVED: width, height, background-color (let the image define size) */
+}
+
+/* The Image itself */
+.gallery-item img {
+    display: block;      /* Removes default bottom whitespace on images */
+    height: 350px;       /* Set a fixed height so they align neatly... */
+    width: auto;         /* ...and let width adjust automatically */
+    
+    /* OR, if you want them to be their original natural sizes like the screenshot:
+       remove 'height: 350px' and let your actual image files dictate the size. 
+       If you do that, use 'max-height' to prevent them from being too huge. */
+    max-height: 400px; 
+}
 
 /* --- LARGE WHITE PLACEHOLDER --- */
 .hero-placeholder {
@@ -160,4 +182,91 @@ nav a {
     margin-bottom: 60px;
 }
 
-.skills-
+.skills-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-family: sans-serif; 
+}
+
+.tags-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.skill-tag {
+    background-color: #e0f7fa;
+    color: #006064;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+/* --- FOOTER / CONNECT --- */
+.connect-section {
+    text-align: center;
+    padding: 40px 0 80px 0;
+}
+
+.connect-section h2 {
+    font-family: 'Times New Roman', serif; /* Serif font for "Let's connect" */
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.sub-text {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+}
+
+.btn-download {
+    background-color: #1a56db;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.or-text {
+    display: block;
+    margin: 10px 0;
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.email-link {
+    color: #1a56db;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.bottom-links {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.bottom-links a {
+    text-decoration: none;
+    color: #1a56db;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Envelope Icon placeholder */
+.icon-envelope {
+    font-size: 2rem;
+    color: #60a5fa;
+    margin-bottom: 10px;
+    display: block;
+}
