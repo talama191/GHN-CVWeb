@@ -64,30 +64,5 @@ window.addEventListener('load', () => {
         setTimeout(() => { isPaused = false; }, 1500);
     });
 
-    // --- 4. NEW: CHAT BUBBLE LOGIC ---
-    const chatBtn = document.getElementById('btn-chat-toggle');
-    const chatBubble = document.getElementById('chat-bubble');
-    const chatClose = document.getElementById('chat-close');
-
-    if (chatBtn && chatBubble) {
-        chatBtn.addEventListener('click', () => {
-            // Toggle the active class
-            chatBubble.classList.toggle('active');
-
-            // If opening, change button text slightly
-            if (chatBubble.classList.contains('active')) {
-                chatBtn.innerHTML = '<span class="icon-chat">✖</span> Close Chat';
-            } else {
-                chatBtn.innerHTML = '<span class="icon-chat">💬</span> Let\'s Chat (About Me)';
-            }
-        });
-
-        // Close button logic
-        if (chatClose) {
-            chatClose.addEventListener('click', () => {
-                chatBubble.classList.remove('active');
-                chatBtn.innerHTML = '<span class="icon-chat">💬</span> Let\'s Chat (About Me)';
-            });
-        }
-    }
+    // (Chat Logic Removed)
 });

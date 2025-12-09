@@ -14,7 +14,6 @@ body {
     /* Ensure you have this image or remove this line */
     background: url('images/bg_gradient.png') no-repeat center center fixed;
     background-color: #F9F7F2;
-    /* Fallback color */
     background-size: cover;
     color: #333;
     line-height: 1.6;
@@ -68,31 +67,46 @@ nav a:hover {
     color: #000;
 }
 
-/* --- CONVERSATIONAL HERO STYLES --- */
+/* --- HERO SECTION (Updated Split Layout) --- */
 .hero-section {
-    position: relative;
     padding: 80px 20px;
-    max-width: 1000px;
+    max-width: 1200px;
+    /* Wider to fit side-by-side */
     margin: 0 auto;
-    text-align: center;
-    /* Removed fixed min-height to allow natural shrinking on mobile */
-    min-height: 500px;
+    /* Vertical center for desktop rows */
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    min-height: 500px;
 }
 
-.hero-intro h1 {
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Split 50/50 on desktop */
+    gap: 60px;
+    align-items: center;
+    width: 100%;
+}
+
+/* LEFT SIDE: Text */
+.hero-text-side {
+    text-align: left;
+}
+
+.hero-text-side h1 {
     font-size: 3.5rem;
     color: #050A30;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     font-weight: 800;
+    line-height: 1.1;
 }
 
-.hero-intro p {
-    font-size: 1.2rem;
-    color: #666;
-    margin-bottom: 30px;
+.hero-tagline {
+    font-size: 1.3rem;
+    color: #555;
+    margin-bottom: 40px;
+    max-width: 90%;
 }
 
 .wave {
@@ -135,196 +149,90 @@ nav a:hover {
     }
 }
 
-/* --- BUTTON GROUP (New) --- */
-/* --- BUTTON GROUP (New) --- */
-.hero-btn-group {
-    display: flex;
-    flex-direction: column;
-    /* Stack vertically on ALL screens */
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    width: 100%;
-    max-width: 340px;
-    /* Constrain width for a clean look */
-    margin: 0 auto;
-}
-
-/* Ensure buttons take full width of the group */
-.btn-chat,
-.btn-secondary {
-    width: 100%;
-}
-
-/* Primary Chat Button */
-.btn-chat {
+/* Primary "See My Work" Button */
+.btn-primary {
     background: #1a56db;
     color: white;
-    border: none;
-    padding: 15px 35px;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    /* Centers text */
-    gap: 10px;
-}
-
-.btn-chat:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(26, 86, 219, 0.3);
-}
-
-/* Secondary "My Work" Button */
-.btn-secondary {
-    background: white;
-    color: #1a56db;
-    border: 2px solid #eef2ff;
-    padding: 13px 35px;
-    /* Slightly smaller padding to match height */
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 50px;
     text-decoration: none;
-    transition: all 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    padding: 16px 40px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    display: inline-block;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.btn-secondary:hover {
-    border-color: #1a56db;
-    background: #f8fafc;
+.btn-primary:hover {
     transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(26, 86, 219, 0.3);
 }
 
-/* --- THE CHAT BUBBLE UI --- */
-.chat-bubble {
-    /* PC Positioning (Floating Card) */
-    position: absolute;
-    top: 100px;
-    right: 0;
-    width: 350px;
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-    z-index: 100;
-
-    /* ANIMATION STATE (Default Hidden) */
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
-    pointer-events: none;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+/* RIGHT SIDE: Bio Card (Replaces Chat) */
+.hero-bio-side {
+    display: flex;
+    justify-content: center;
+    /* Centers the card in its column */
 }
 
-/* Active State */
-.chat-bubble.active {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    pointer-events: all;
+.bio-card {
+    background: rgba(255, 255, 255, 0.6);
+    /* Glassy White */
+    backdrop-filter: blur(12px);
+    /* Blur effect */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    max-width: 450px;
+    width: 100%;
+    transform: rotate(2deg);
+    /* Fun tilt */
+    transition: transform 0.3s ease;
 }
 
-.chat-header {
-    background: #050A30;
-    color: white;
-    padding: 15px;
+.bio-card:hover {
+    transform: rotate(0deg) scale(1.02);
+    /* Straighten up on hover */
+}
+
+.bio-header {
     display: flex;
     align-items: center;
     gap: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 15px;
 }
 
 .avatar-circle {
-    width: 40px;
-    height: 40px;
-    background: #d4fc79;
-    color: #050A30;
+    width: 45px;
+    height: 45px;
+    background: #050A30;
+    color: #d4fc79;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
+    font-size: 1.2rem;
 }
 
-.chat-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    font-size: 0.9rem;
-    text-align: left;
+.bio-label {
+    font-weight: 700;
+    color: #050A30;
+    font-size: 1.1rem;
 }
 
-.chat-info span {
-    font-size: 0.75rem;
-    opacity: 0.8;
+.bio-content p {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 15px;
+    line-height: 1.6;
 }
 
-.chat-close {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-.chat-body {
-    padding: 20px;
-    background: #f9f9f9;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.msg-row {
-    display: flex;
-    animation: popIn 0.5s ease backwards;
-}
-
-.msg-left {
-    justify-content: flex-start;
-}
-
-.msg-right {
-    justify-content: flex-end;
-}
-
-.msg-text {
-    background: #fff;
-    padding: 10px 15px;
-    border-radius: 15px;
-    border-bottom-left-radius: 2px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    font-size: 0.95rem;
-    line-height: 1.4;
-    max-width: 85%;
-    text-align: left;
-}
-
-.msg-btn {
-    background: #1a56db;
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    border-bottom-right-radius: 2px;
-}
-
-@keyframes popIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.bio-content p:last-child {
+    margin-bottom: 0;
 }
 
 
@@ -584,7 +492,7 @@ nav a:hover {
         padding: 0 20px;
     }
 
-    /* Stack Logo and Nav on Mobile to ensure links have space */
+    /* Header Stack */
     header {
         flex-direction: column;
         gap: 20px;
@@ -598,62 +506,37 @@ nav a:hover {
 
     nav a {
         margin: 0 15px;
-        /* Even spacing, smaller than desktop */
         display: inline-block;
     }
 
-    .hero-section {
-        padding: 40px 20px;
-        min-height: auto;
-        /* Shrink height on mobile */
+    /* HERO STACKING */
+    .hero-grid {
+        grid-template-columns: 1fr;
+        /* Stack one column */
+        gap: 40px;
+        text-align: center;
+        /* Center everything on mobile */
     }
 
-    .hero-intro h1 {
-        font-size: 2.2rem;
+    .hero-text-side {
+        text-align: center;
+        /* Override left align */
     }
 
-    /* VERTICAL STACK FOR BUTTONS */
-    .hero-btn-group {
-        flex-direction: column;
-        /* Stack them! */
+    .hero-text-side h1 {
+        font-size: 2.5rem;
+    }
+
+    .btn-primary {
         width: 100%;
+        /* Full width button on mobile */
     }
 
-    .btn-chat,
-    .btn-secondary {
-        width: 100%;
-        /* Full width for easier tapping */
-    }
-
-    /* CHAT BOX FIX */
-    .chat-bubble {
-        position: relative;
-        top: auto;
-        right: auto;
-        width: 100%;
-        margin-top: 30px;
-
-        /* The "Ghost Space" Fix: 
-           Collapse height to 0 when hidden, animate to 500px when active */
-        max-height: 0;
-        opacity: 0;
-        margin: 0;
-        /* Remove margin when closed */
-        padding: 0;
-        /* Remove padding when closed */
-        overflow: hidden;
-        /* Ensure content doesn't spill */
-
-        transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
-    }
-
-    .chat-bubble.active {
-        opacity: 1;
-        max-height: 600px;
-        /* Big enough to fit content */
-        margin-top: 30px;
-        /* Bring margin back */
-        overflow: visible;
+    /* Bio Card adjustments for mobile */
+    .bio-card {
+        transform: rotate(0deg);
+        /* No tilt on mobile */
+        max-width: 100%;
     }
 
     /* Skills Mobile */
