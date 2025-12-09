@@ -1,4 +1,6 @@
-/* --- RESET & BASIC SETUP --- */
+/* =========================================
+   1. RESET & GLOBAL STYLES
+   ========================================= */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,7 +13,7 @@ html {
 
 body {
     font-family: 'Inter', Helvetica, Arial, sans-serif;
-    /* Ensure you have this image or remove this line */
+    /* Background setup */
     background: url('images/bg_gradient.png') no-repeat center center fixed;
     background-color: #F9F7F2;
     background-size: cover;
@@ -19,21 +21,36 @@ body {
     line-height: 1.6;
 }
 
-/* Container */
+/* =========================================
+   2. LAYOUT & CONTAINER
+   ========================================= */
 .container {
     max-width: 96%;
     margin: 0 auto;
     padding: 0 40px;
     overflow: hidden;
+    /* Prevents horizontal scroll */
+    position: relative;
 }
 
-/* --- HEADER --- */
+/* Spacer for visual gaps (Desktop only) */
+.future-section-gap {
+    height: 100px;
+}
+
+/* =========================================
+   3. HEADER & NAVIGATION
+   ========================================= */
 header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 40px;
+    z-index: 10;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px 0;
-    margin-bottom: 20px;
 }
 
 .logo {
@@ -67,45 +84,43 @@ nav a:hover {
     color: #000;
 }
 
-/* --- HERO SECTION (Updated Split Layout) --- */
+/* =========================================
+   4. HERO SECTION
+   ========================================= */
 .hero-section {
-    padding: 80px 20px;
-    max-width: 1200px;
-    /* Wider to fit side-by-side */
-    margin: 0 auto;
-    /* Vertical center for desktop rows */
+    min-height: 100vh;
+    /* Full screen on Desktop */
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    min-height: 500px;
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
 }
 
 .hero-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* Split 50/50 on desktop */
-    gap: 60px;
+    /* Split 50/50 */
+    gap: 80px;
     align-items: center;
     width: 100%;
+    max-width: 1200px;
 }
 
-/* LEFT SIDE: Text */
-.hero-text-side {
-    text-align: left;
-}
-
+/* Left Side: Typography */
 .hero-text-side h1 {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
     color: #050A30;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     font-weight: 800;
     line-height: 1.1;
+    letter-spacing: -1px;
 }
 
 .hero-tagline {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     color: #555;
-    margin-bottom: 40px;
     max-width: 90%;
 }
 
@@ -115,70 +130,17 @@ nav a:hover {
     transform-origin: 70% 70%;
 }
 
-@keyframes wave-animation {
-    0% {
-        transform: rotate(0.0deg)
-    }
-
-    10% {
-        transform: rotate(14.0deg)
-    }
-
-    20% {
-        transform: rotate(-8.0deg)
-    }
-
-    30% {
-        transform: rotate(14.0deg)
-    }
-
-    40% {
-        transform: rotate(-4.0deg)
-    }
-
-    50% {
-        transform: rotate(10.0deg)
-    }
-
-    60% {
-        transform: rotate(0.0deg)
-    }
-
-    100% {
-        transform: rotate(0.0deg)
-    }
-}
-
-/* Primary "See My Work" Button */
-.btn-primary {
-    background: #1a56db;
-    color: white;
-    text-decoration: none;
-    padding: 16px 40px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 50px;
-    display: inline-block;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(26, 86, 219, 0.3);
-}
-
-/* RIGHT SIDE: Bio Card (Replaces Chat) */
+/* Right Side: Bio Card */
 .hero-bio-side {
     display: flex;
     justify-content: center;
-    /* Centers the card in its column */
+    /* Gentle floating animation */
+    animation: float-card 6s ease-in-out infinite;
 }
 
 .bio-card {
     background: rgba(255, 255, 255, 0.6);
-    /* Glassy White */
     backdrop-filter: blur(12px);
-    /* Blur effect */
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.5);
     padding: 30px;
@@ -186,14 +148,14 @@ nav a:hover {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
     max-width: 450px;
     width: 100%;
+
+    /* Desktop: Tilted style */
     transform: rotate(2deg);
-    /* Fun tilt */
     transition: transform 0.3s ease;
 }
 
 .bio-card:hover {
     transform: rotate(0deg) scale(1.02);
-    /* Straighten up on hover */
 }
 
 .bio-header {
@@ -235,8 +197,9 @@ nav a:hover {
     margin-bottom: 0;
 }
 
-
-/* --- APP CARDS SECTION --- */
+/* =========================================
+   5. WORK / CARDS GRID
+   ========================================= */
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -263,7 +226,6 @@ nav a:hover {
     position: relative;
 }
 
-/* Variations for gradients */
 .c-2 .card-image-area {
     background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
 }
@@ -309,7 +271,9 @@ nav a:hover {
     float: right;
 }
 
-/* --- SKILLS SECTION --- */
+/* =========================================
+   6. SKILLS SECTION
+   ========================================= */
 .skills-section {
     background: linear-gradient(135deg, #050A30 0%, #1a255e 100%);
     color: white;
@@ -373,7 +337,9 @@ nav a:hover {
     color: #fff;
 }
 
-/* --- FOOTER / CONNECT --- */
+/* =========================================
+   7. FOOTER & STICKY CTA
+   ========================================= */
 .connect-section {
     text-align: center;
     padding: 40px 0 80px 0;
@@ -438,65 +404,103 @@ nav a:hover {
     display: block;
 }
 
-/* --- CAROUSEL ROW --- */
-.gallery-row {
-    display: flex;
-    align-items: flex-end;
-    gap: 20px;
-    padding: 20px 0;
-    overflow-x: auto;
-    width: 100%;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+/* Sticky Button */
+.sticky-cta {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a56db;
+    color: white;
+    text-decoration: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    box-shadow: 0 15px 35px rgba(26, 86, 219, 0.35);
+    z-index: 1000;
+    opacity: 1;
+    pointer-events: all;
+    transition: all 0.4s ease;
 }
 
-.gallery-row::-webkit-scrollbar {
-    display: none;
+.sticky-cta:hover {
+    transform: translateX(-50%) translateY(-5px);
+    box-shadow: 0 20px 45px rgba(26, 86, 219, 0.5);
 }
 
-.gallery-item {
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-}
-
-.gallery-item:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-}
-
-.gallery-item img {
-    display: block;
-    user-select: none;
-    -webkit-user-drag: none;
+.sticky-cta.hidden {
+    opacity: 0;
     pointer-events: none;
+    transform: translateX(-50%) translateY(20px);
 }
 
-/* STEP LADDER PATTERN */
-.gallery-item:nth-child(3n+1) img {
-    height: 250px;
+/* =========================================
+   8. ANIMATIONS
+   ========================================= */
+@keyframes wave-animation {
+    0% {
+        transform: rotate(0.0deg)
+    }
+
+    10% {
+        transform: rotate(14.0deg)
+    }
+
+    20% {
+        transform: rotate(-8.0deg)
+    }
+
+    30% {
+        transform: rotate(14.0deg)
+    }
+
+    40% {
+        transform: rotate(-4.0deg)
+    }
+
+    50% {
+        transform: rotate(10.0deg)
+    }
+
+    60% {
+        transform: rotate(0.0deg)
+    }
+
+    100% {
+        transform: rotate(0.0deg)
+    }
 }
 
-.gallery-item:nth-child(3n+2) img {
-    height: 325px;
+@keyframes float-card {
+    0% {
+        transform: translateY(0px) rotate(2deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(3deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(2deg);
+    }
 }
 
-.gallery-item:nth-child(3n) img {
-    height: 400px;
-}
-
-/* --- MOBILE RESPONSIVENESS --- */
+/* =========================================
+   9. MOBILE RESPONSIVENESS
+   ========================================= */
 @media (max-width: 768px) {
     .container {
         padding: 0 20px;
     }
 
-    /* Header Stack */
+    /* Stack Header */
     header {
+        position: relative;
+        /* No absolute on mobile */
+        padding: 20px 0;
         flex-direction: column;
         gap: 20px;
-        padding: 20px 0;
     }
 
     nav {
@@ -509,37 +513,42 @@ nav a:hover {
         display: inline-block;
     }
 
-    /* HERO STACKING */
-    .hero-grid {
-        grid-template-columns: 1fr;
-        /* Stack one column */
-        gap: 40px;
-        text-align: center;
-        /* Center everything on mobile */
+    /* Compact Hero */
+    .hero-section {
+        min-height: auto;
+        /* Less padding on bottom to fix large gap */
+        padding: 60px 20px 40px;
     }
 
-    .hero-text-side {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
         text-align: center;
-        /* Override left align */
     }
 
     .hero-text-side h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
 
-    .btn-primary {
-        width: 100%;
-        /* Full width button on mobile */
-    }
-
-    /* Bio Card adjustments for mobile */
+    /* Straight Bio Card */
     .bio-card {
-        transform: rotate(0deg);
-        /* No tilt on mobile */
+        transform: rotate(0deg) !important;
+        /* Force straight */
+        margin-top: 10px;
         max-width: 100%;
     }
 
-    /* Skills Mobile */
+    /* Disable floating animation on mobile to reduce motion sickness/distraction */
+    .hero-bio-side {
+        animation: none;
+    }
+
+    /* Hide the 100px spacer div on mobile */
+    .future-section-gap {
+        display: none;
+    }
+
+    /* Compact Skills */
     .skills-section {
         padding: 40px 15px;
     }
@@ -558,19 +567,10 @@ nav a:hover {
         font-size: 0.85rem;
     }
 
-    /* Carousel Mobile */
-    .gallery-item {
-        min-width: 60vw;
-    }
-
-    .gallery-item img {
-        width: 100%;
-        height: auto !important;
-        object-fit: contain;
-    }
-
-    .gallery-row {
-        padding-left: 20vw;
-        padding-right: 20vw;
+    /* Smaller Sticky Button */
+    .sticky-cta {
+        padding: 12px 30px;
+        font-size: 0.95rem;
+        bottom: 25px;
     }
 }
