@@ -7,7 +7,8 @@
 
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #F9F7F2; /* Light Beige Background */
+    background-color: #F9F7F2;
+    /* Light Beige Background */
     color: #333;
     line-height: 1.6;
 }
@@ -17,6 +18,9 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+
+    /* Add this line to crop the carousel edges cleanly */
+    overflow: hidden;
 }
 
 /* --- HEADER --- */
@@ -43,65 +47,15 @@ nav a {
     font-weight: 500;
 }
 
-/* --- TOP GALLERY --- */
-.gallery-row {
-    display: flex;
-    gap: 15px;
-    overflow-x: auto;
-    padding-bottom: 20px;
-    margin-bottom: 40px;
-    /* Hide scrollbar for cleaner look */
-    scrollbar-width: none; 
-}
-
-/* Container for the row */
-.gallery-row {
-    display: flex;
-    align-items: center; /* This centers items vertically (tall vs short) */
-    gap: 30px;           /* Space between the images */
-    overflow-x: auto;    /* Allows scrolling sideways if they overflow */
-    padding: 20px 0;     /* Breathing room on top/bottom */
-    
-    /* Hide scrollbar for a cleaner look (optional) */
-    scrollbar-width: none; 
-}
-.gallery-row::-webkit-scrollbar { 
-    display: none; 
-}
-
-/* Individual wrapper */
-.gallery-item {
-    flex: 0 0 auto;      /* Ensures items don't shrink */
-    position: relative;
-    border-radius: 20px; /* Matches the rounded corners in your image */
-    overflow: hidden;    /* Ensures the image stays inside the rounded corners */
-    
-    /* Optional: Adds a subtle shadow like the screenshot */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
-    
-    /* REMOVED: width, height, background-color (let the image define size) */
-}
-
-/* The Image itself */
-.gallery-item img {
-    display: block;      /* Removes default bottom whitespace on images */
-    height: 350px;       /* Set a fixed height so they align neatly... */
-    width: auto;         /* ...and let width adjust automatically */
-    
-    /* OR, if you want them to be their original natural sizes like the screenshot:
-       remove 'height: 350px' and let your actual image files dictate the size. 
-       If you do that, use 'max-height' to prevent them from being too huge. */
-    max-height: 400px; 
-}
-
 /* --- LARGE WHITE PLACEHOLDER --- */
 .hero-placeholder {
     background-color: #fff;
     width: 100%;
-    height: 600px; /* Tall empty area as seen in image */
+    height: 600px;
+    /* Tall empty area as seen in image */
     border-radius: 30px;
     margin-bottom: 60px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
 }
 
 /* --- APP CARDS SECTION --- */
@@ -113,7 +67,8 @@ nav a {
 }
 
 .app-card {
-    background: #fff; /* In image, the card itself seems transparent/white */
+    background: #fff;
+    /* In image, the card itself seems transparent/white */
     border-radius: 20px;
     padding: 10px;
     display: flex;
@@ -132,8 +87,13 @@ nav a {
 }
 
 /* Variations for gradients */
-.c-2 .card-image-area { background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); }
-.c-3 .card-image-area { background: linear-gradient(135deg, #fccb90 0%, #d57eeb 100%); }
+.c-2 .card-image-area {
+    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+.c-3 .card-image-area {
+    background: linear-gradient(135deg, #fccb90 0%, #d57eeb 100%);
+}
 
 .phone-mockup {
     width: 80px;
@@ -141,7 +101,7 @@ nav a {
     background: #fff;
     border: 2px solid #333;
     border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .card-content h3 {
@@ -174,7 +134,8 @@ nav a {
 
 /* --- SKILLS SECTION --- */
 .skills-section {
-    background-color: #050A30; /* Dark Navy */
+    background-color: #050A30;
+    /* Dark Navy */
     color: white;
     border-radius: 30px;
     padding: 50px 40px;
@@ -185,7 +146,7 @@ nav a {
 .skills-section h2 {
     font-size: 2rem;
     margin-bottom: 30px;
-    font-family: sans-serif; 
+    font-family: sans-serif;
 }
 
 .tags-wrapper {
@@ -212,7 +173,8 @@ nav a {
 }
 
 .connect-section h2 {
-    font-family: 'Times New Roman', serif; /* Serif font for "Let's connect" */
+    font-family: 'Times New Roman', serif;
+    /* Serif font for "Let's connect" */
     font-size: 3rem;
     margin-bottom: 10px;
     color: #222;
@@ -269,4 +231,80 @@ nav a {
     color: #60a5fa;
     margin-bottom: 10px;
     display: block;
+}
+
+/* --- CAROUSEL ROW --- */
+.gallery-row {
+    display: flex;
+    align-items: flex-end; /* Keeps the step-ladder alignment */
+    gap: 40px;
+    padding: 40px 0;
+    
+    /* CHANGED: Allow scrolling, but hide the bar */
+    overflow-x: auto; 
+    width: 100%;
+    
+    /* IMPORTANT: Remove 'animation' and 'width: max-content' 
+       so JavaScript can control the movement. */
+    
+    /* Hide scrollbar */
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+}
+
+.gallery-row::-webkit-scrollbar { 
+    display: none; 
+}
+
+/* Optional: Add a cursor to show it's clickable */
+.gallery-item {
+    cursor: pointer; 
+    /* ... keep your other gallery-item styles (shadows, etc) ... */
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px);
+    /* Lifts up slightly on hover */
+}
+
+.gallery-item img {
+    display: block;
+    width: auto;
+    /* Default fallback height */
+    height: 300px;
+}
+
+/* --- THE STEP LADDER PATTERN (Ratio 4:5:6) --- */
+
+/* 1st, 4th, 7th... (Low Step) */
+.gallery-item:nth-child(3n+1) img {
+    height: 300px;
+    /* Base height (4) */
+}
+
+/* 2nd, 5th, 8th... (Middle Step) */
+.gallery-item:nth-child(3n+2) img {
+    height: 375px;
+    /* Taller (5) */
+}
+
+/* 3rd, 6th, 9th... (High Step) */
+.gallery-item:nth-child(3n) img {
+    height: 450px;
+    /* Tallest (6) */
+}
+
+/* 1st, 4th, 7th... (Tall Poster) */
+.gallery-item:nth-child(3n+1) img {
+    height: 400px;
+}
+
+/* 2nd, 5th, 8th... (Medium Box) */
+.gallery-item:nth-child(3n+2) img {
+    height: 300px;
+}
+
+/* 3rd, 6th, 9th... (Small Square) */
+.gallery-item:nth-child(3n) img {
+    height: 200px;
 }
