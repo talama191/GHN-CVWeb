@@ -37,18 +37,18 @@ window.addEventListener('load', () => {
     function autoScroll() {
         if (!isPaused) {
             gallery.scrollLeft += scrollSpeed;
-        }
 
-        // Loop Logic for 5 sets
+            // Loop Logic for 5 sets
 
-        // Right Limit: End of Set 3 (3 * setWidth)
-        if (gallery.scrollLeft >= 3 * setWidth - 1) {
-            gallery.scrollLeft = 2 * setWidth + (gallery.scrollLeft - 3 * setWidth);
-        }
+            // Right Limit: End of Set 3 (3 * setWidth)
+            if (gallery.scrollLeft >= 3 * setWidth - 1) {
+                gallery.scrollLeft = 2 * setWidth + (gallery.scrollLeft - 3 * setWidth);
+            }
 
-        // Left Limit: Start of Set 2 (1 * setWidth)
-        else if (gallery.scrollLeft <= 1 * setWidth) {
-            gallery.scrollLeft = 2 * setWidth - (1 * setWidth - gallery.scrollLeft);
+            // Left Limit: Start of Set 2 (1 * setWidth)
+            else if (gallery.scrollLeft <= 1 * setWidth) {
+                gallery.scrollLeft = 2 * setWidth - (1 * setWidth - gallery.scrollLeft);
+            }
         }
 
 

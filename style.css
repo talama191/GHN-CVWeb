@@ -532,6 +532,36 @@ nav a:hover {
         /* Slightly smaller text */
     }
 
+    /* Fix Mobile Hero Scale & Alignment */
+    .hero-glow {
+        text-align: center;
+        padding-top: 40px;
+    }
+
+    .hero-glow h1 {
+        font-size: 3rem;
+        letter-spacing: -1px;
+    }
+
+    /* Center the paragraph */
+    .hero-glow p {
+        margin: 0 auto 40px;
+    }
+
+    /* Stack Buttons Vertical */
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+        width: 100%;
+        justify-content: center;
+        /* Center text/icon inside button */
+    }
+
     /* Carousel 60% Width */
     .gallery-item {
         min-width: 60vw;
