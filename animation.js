@@ -2,62 +2,46 @@ window.addEventListener('load', () => {
     const gallery = document.querySelector('.gallery-row');
     const items = document.querySelectorAll('.gallery-item');
 
-    if (!gallery || items.length === 0) return;
+    // Safety checks
+    if (!gallery || items.length < 5) return;
 
-    // --- SETUP: Start in the Middle Set ---
+    // --- SETUP: Calculate Dimensions ---
+    let setWidth = gallery.scrollWidth / 5;
 
-    // Safety check: Ensure we have enough items
-    if (items.length < 5) return;
-
-    const itemsPerSet = Math.floor(items.length / 5);
-
-
-    // Measure visual width of one set
-    const firstRect = items[0].getBoundingClientRect();
-    const secondSetFirstRect = items[itemsPerSet].getBoundingClientRect();
-
-    // Width of ONE set
-    let setWidth = secondSetFirstRect.left - firstRect.left;
-
-    // Fallbacks
-    if (!setWidth || setWidth <= 0) {
-        setWidth = items[itemsPerSet].offsetLeft - items[0].offsetLeft;
-    }
-    if (!setWidth || setWidth <= 0) {
+    // Recalculate on resize
+    window.addEventListener('resize', () => {
         setWidth = gallery.scrollWidth / 5;
-    }
+    });
 
-    // Start in the Middle (Set 3 of 5).
+    // Start in the Middle (Set 3)
     gallery.scrollLeft = 2 * setWidth;
-
 
     let isPaused = false;
     let scrollSpeed = 1;
 
-    function autoScroll() {
+    // --- THE CORE ENGINE ---
+    function loop() {
         if (!isPaused) {
             gallery.scrollLeft += scrollSpeed;
-
-            // Loop Logic for 5 sets
-
-            // Right Limit: End of Set 3 (3 * setWidth)
-            if (gallery.scrollLeft >= 3 * setWidth - 1) {
-                gallery.scrollLeft = 2 * setWidth + (gallery.scrollLeft - 3 * setWidth);
-            }
-
-            // Left Limit: Start of Set 2 (1 * setWidth)
-            else if (gallery.scrollLeft <= 1 * setWidth) {
-                gallery.scrollLeft = 2 * setWidth - (1 * setWidth - gallery.scrollLeft);
-            }
         }
 
+        // INFINITE TELEPORTATION
+        if (gallery.scrollLeft >= 3 * setWidth) {
+            gallery.scrollLeft -= setWidth;
+        }
+        else if (gallery.scrollLeft <= 1 * setWidth) {
+            gallery.scrollLeft += setWidth;
+        }
 
-        requestAnimationFrame(autoScroll);
+        requestAnimationFrame(loop);
     }
 
-    autoScroll();
+    loop();
 
-    // --- INTERACTION ---
+
+    // --- INTERACTIONS ---
+
+    // 1. Click to Center
     items.forEach((item) => {
         item.addEventListener('click', () => {
             isPaused = true;
@@ -66,17 +50,44 @@ window.addEventListener('load', () => {
                 behavior: 'smooth',
                 block: 'nearest'
             });
-            setTimeout(() => { isPaused = false; }, 3000);
+            setTimeout(() => { isPaused = false; }, 2000);
         });
     });
 
+    // 2. Desktop Mouse Pause
     gallery.addEventListener('mouseenter', () => isPaused = true);
     gallery.addEventListener('mouseleave', () => isPaused = false);
 
-    // --- MOBILE TOUCH SUPPORT ---
-    gallery.addEventListener('touchstart', () => isPaused = true);
+    // 3. Mobile Touch Logic
+    gallery.addEventListener('touchstart', () => { isPaused = true; });
     gallery.addEventListener('touchend', () => {
-        // Resume after a short delay to allow for Momentum Scrolling
-        setTimeout(() => { isPaused = false; }, 1000);
+        setTimeout(() => { isPaused = false; }, 1500);
     });
+
+    // --- 4. NEW: CHAT BUBBLE LOGIC ---
+    const chatBtn = document.getElementById('btn-chat-toggle');
+    const chatBubble = document.getElementById('chat-bubble');
+    const chatClose = document.getElementById('chat-close');
+
+    if (chatBtn && chatBubble) {
+        chatBtn.addEventListener('click', () => {
+            // Toggle the active class
+            chatBubble.classList.toggle('active');
+
+            // If opening, change button text slightly
+            if (chatBubble.classList.contains('active')) {
+                chatBtn.innerHTML = '<span class="icon-chat">✖</span> Close Chat';
+            } else {
+                chatBtn.innerHTML = '<span class="icon-chat">💬</span> Let\'s Chat (About Me)';
+            }
+        });
+
+        // Close button logic
+        if (chatClose) {
+            chatClose.addEventListener('click', () => {
+                chatBubble.classList.remove('active');
+                chatBtn.innerHTML = '<span class="icon-chat">💬</span> Let\'s Chat (About Me)';
+            });
+        }
+    }
 });
