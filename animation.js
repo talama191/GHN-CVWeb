@@ -13,7 +13,7 @@ window.addEventListener('load', () => {
     gallery.scrollLeft = setWidth;
 
     let isPaused = false;
-    let scrollSpeed = 2;
+    let scrollSpeed = 1;
 
     // 1. The Infinite Animation Loop
     function autoScroll() {

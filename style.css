@@ -236,35 +236,47 @@ nav a {
 /* --- CAROUSEL ROW --- */
 .gallery-row {
     display: flex;
-    align-items: flex-end; /* Keeps the step-ladder alignment */
-    gap: 40px;
-    padding: 40px 0;
-    
+    align-items: flex-end;
+    /* Keeps the step-ladder alignment */
+    gap: 20px;
+    padding: 20px 0;
+
     /* CHANGED: Allow scrolling, but hide the bar */
-    overflow-x: auto; 
+    overflow-x: auto;
     width: 100%;
-    
+
     /* IMPORTANT: Remove 'animation' and 'width: max-content' 
        so JavaScript can control the movement. */
-    
+
     /* Hide scrollbar */
-    scrollbar-width: none; 
+    scrollbar-width: none;
     -ms-overflow-style: none;
 }
 
-.gallery-row::-webkit-scrollbar { 
-    display: none; 
+.gallery-row::-webkit-scrollbar {
+    display: none;
 }
 
-/* Optional: Add a cursor to show it's clickable */
+/* Find the existing .gallery-item rule and ADD the transition */
 .gallery-item {
-    cursor: pointer; 
-    /* ... keep your other gallery-item styles (shadows, etc) ... */
+    cursor: pointer;
+    /* Smooth transition for transform AND shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* Optional: Add a subtle base shadow so they don't look completely flat */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
 }
 
+/* Replace your existing hover rule with this */
 .gallery-item:hover {
-    transform: translateY(-10px);
-    /* Lifts up slightly on hover */
+    /* Lift up slightly more */
+    transform: translateY(-12px) scale(1.02);
+    
+    /* The Magic Shadow: Large blur, low opacity for softness */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    
+    /* Optional: Ensure it stays on top of neighbors */
+    z-index: 10;
 }
 
 .gallery-item img {
@@ -278,33 +290,18 @@ nav a {
 
 /* 1st, 4th, 7th... (Low Step) */
 .gallery-item:nth-child(3n+1) img {
-    height: 300px;
+    height: 150px;
     /* Base height (4) */
 }
 
 /* 2nd, 5th, 8th... (Middle Step) */
 .gallery-item:nth-child(3n+2) img {
-    height: 375px;
+    height: 225px;
     /* Taller (5) */
 }
 
 /* 3rd, 6th, 9th... (High Step) */
 .gallery-item:nth-child(3n) img {
-    height: 450px;
-    /* Tallest (6) */
-}
-
-/* 1st, 4th, 7th... (Tall Poster) */
-.gallery-item:nth-child(3n+1) img {
-    height: 400px;
-}
-
-/* 2nd, 5th, 8th... (Medium Box) */
-.gallery-item:nth-child(3n+2) img {
     height: 300px;
-}
-
-/* 3rd, 6th, 9th... (Small Square) */
-.gallery-item:nth-child(3n) img {
-    height: 200px;
+    /* Tallest (6) */
 }
