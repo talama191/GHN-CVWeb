@@ -47,6 +47,73 @@ nav a {
     font-weight: 500;
 }
 
+/* Hero section */
+.hero-glow {
+    text-align: center;
+    padding: 120px 20px 80px;
+    background: radial-gradient(circle at 50% 30%, rgba(26, 86, 219, 0.05) 0%, transparent 60%);
+}
+
+.status-badge {
+    display: inline-block;
+    background: rgba(26, 86, 219, 0.1);
+    color: #1a56db;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.hero-glow h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: #050A30;
+    font-weight: 800;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #1a56db, #d4fc79);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-glow p {
+    font-size: 1.25rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Buttons */
+.btn-primary {
+    background: #050A30;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.btn-ghost {
+    color: #050A30;
+    padding: 15px 40px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
+
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(5,10,48,0.15); }
+.btn-ghost:hover { opacity: 0.7; }
+
 /* --- LARGE WHITE PLACEHOLDER --- */
 .hero-placeholder {
     background-color: #fff;
