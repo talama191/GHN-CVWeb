@@ -133,20 +133,42 @@ nav a {
 }
 
 /* --- SKILLS SECTION --- */
+/* --- MODERN SKILLS SECTION --- */
 .skills-section {
-    background-color: #050A30;
-    /* Dark Navy */
+    /* Upgrade 1: Subtle Gradient Background instead of flat color */
+    background: linear-gradient(135deg, #050A30 0%, #1a255e 100%);
     color: white;
     border-radius: 30px;
-    padding: 50px 40px;
+    
+    /* Upgrade 2: Better Padding (More vertical, less horizontal for safety) */
+    padding: 60px 20px;
     text-align: center;
     margin-bottom: 60px;
+    
+    /* Adds a subtle texture/glow behind the text */
+    position: relative;
+    box-shadow: 0 20px 40px rgba(5, 10, 48, 0.2);
+    overflow: hidden;
+}
+
+/* Optional: Decorative faint glow in the background */
+.skills-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 .skills-section h2 {
-    font-size: 2rem;
-    margin-bottom: 30px;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
     font-family: sans-serif;
+    position: relative; /* Brings text above the glow */
 }
 
 .tags-wrapper {
@@ -154,16 +176,37 @@ nav a {
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
+    
+    /* Keeps the cloud centered and not too wide on big screens */
+    max-width: 800px; 
+    margin: 0 auto;
+    position: relative;
 }
 
 .skill-tag {
-    background-color: #e0f7fa;
-    color: #006064;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 0.9rem;
+    /* Upgrade 3: Glassmorphism Style */
+    background: rgba(255, 255, 255, 0.08); /* Semi-transparent */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Thin subtle border */
+    backdrop-filter: blur(5px); /* Blurs background behind tag */
+    -webkit-backdrop-filter: blur(5px); /* Safari support */
+    
+    color: #e0f7fa; /* Soft cyan-white text */
+    padding: 12px 24px;
+    border-radius: 50px; /* Pill shape */
+    font-weight: 500;
+    font-size: 0.95rem;
     white-space: nowrap;
+    
+    /* Smooth hover effect */
+    transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
 }
 
 /* --- FOOTER / CONNECT --- */
@@ -280,10 +323,14 @@ nav a {
 }
 
 .gallery-item img {
-    display: block;
-    width: auto;
-    /* Default fallback height */
-    height: 300px;
+    /* ... existing styles ... */
+    
+    /* ADD THESE LINES */
+    user-select: none;
+    -webkit-user-drag: none; /* Chrome/Safari */
+    pointer-events: none;    /* Ensures clicks pass through to the parent div if needed, 
+                                but might disable right-click save. 
+                                Safer to just use draggable="false" in HTML if you want right-click. */
 }
 
 /* --- THE STEP LADDER PATTERN (Ratio 4:5:6) --- */
@@ -304,4 +351,27 @@ nav a {
 .gallery-item:nth-child(3n) img {
     height: 300px;
     /* Tallest (6) */
+}
+
+
+
+/* --- MOBILE FIX (The "Squished" Fix) --- */
+@media (max-width: 768px) {
+    .skills-section {
+        padding: 40px 15px; /* Reduce padding to give tags more room */
+    }
+
+    .skills-section h2 {
+        font-size: 1.6rem;
+        margin-bottom: 25px;
+    }
+
+    .tags-wrapper {
+        gap: 8px; /* Tighter gap so they fit better */
+    }
+
+    .skill-tag {
+        padding: 8px 16px; /* Smaller buttons */
+        font-size: 0.85rem; /* Slightly smaller text */
+    }
 }
