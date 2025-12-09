@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Layout Recreation</title>
+    <!-- Google Fonts: Inter (Sans) and Playfair Display (Serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,19 +18,19 @@
 
     <div class="container">
         <header>
-            <div class="logo">JOHN DOE</div>
+            <div class="logo">JOHN DOE <span class="role-badge">UX/UI Designer</span></div>
             <nav>
-                <a href="#">Work</a>
+                <a href="#work">Work</a>
                 <a href="#">About</a>
                 <a href="#">Store</a>
             </nav>
         </header>
         <div class="hero-section hero-glow">
             <div class="status-badge">Available for new projects</div>
-            <h1>Creating Digital <br> <span class="text-gradient">Masterpieces</span></h1>
+            <h1>Creating Digital <br> <span class="serif-font">Masterpieces</span></h1>
             <p>I design interfaces that users love to touch. Simple, intuitive, and engaging.</p>
             <div class="hero-actions">
-                <a href="#" class="btn-primary">See My Work</a>
+                <a href="#work" class="btn-primary">See My Work</a>
                 <a href="#" class="btn-ghost">About Me ↓</a>
             </div>
         </div>
@@ -49,9 +55,23 @@
             <div class="gallery-item"><img draggable="false" src="images/carousel_4.png" alt=""></div>
             <div class="gallery-item"><img draggable="false" src="images/carousel_5.jpg" alt=""></div>
             <div class="gallery-item"><img draggable="false" src="images/carousel_6.png" alt=""></div>
+            <!-- Set 4 -->
+            <div class="gallery-item"><img draggable="false" src="images/carousel_1.png" alt=""></div>
+            <div class="gallery-item"><img draggable="false" src="images/carousel_2.png" alt=""></div>
+            <div class="gallery-item"><img draggable="false" src="images/carousel_3.png" alt=""></div>
+            <div class="gallery-item"><img draggable="false" src="images/carousel_4.png" alt=""></div>
+            <div class="gallery-item"><img draggable="false" src="images/carousel_5.jpg" alt=""></div>
+            <div class="gallery-item"><img draggable="false" src="images/carousel_6.png" alt=""></div>
+            <!-- Set 5 -->
+            <div class="gallery-item"><img draggable="false" src="images/carousel_1.png" alt=""></div>
+            <div class="gallery-item"><img draggable="false" src="images/carousel_2.png" alt=""></div>
+            <div class="gallery-item"><img draggable="false" src="images/carousel_3.png" alt=""></div>
+            <div class="gallery-item"><img draggable="false" src="images/carousel_4.png" alt=""></div>
+            <div class="gallery-item"><img draggable="false" src="images/carousel_5.jpg" alt=""></div>
+            <div class="gallery-item"><img draggable="false" src="images/carousel_6.png" alt=""></div>
         </div>
 
-        <div class="cards-grid">
+        <div class="cards-grid" id="work">
             <div class="app-card c-1">
                 <div class="card-image-area">
                     <div class="phone-mockup"></div>

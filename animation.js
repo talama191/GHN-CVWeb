@@ -5,30 +5,53 @@ window.addEventListener('load', () => {
     if (!gallery || items.length === 0) return;
 
     // --- SETUP: Start in the Middle Set ---
-    const setWidth = gallery.scrollWidth / 3;
-    gallery.scrollLeft = setWidth;
+
+    // Safety check: Ensure we have enough items
+    if (items.length < 5) return;
+
+    const itemsPerSet = Math.floor(items.length / 5);
+
+
+    // Measure visual width of one set
+    const firstRect = items[0].getBoundingClientRect();
+    const secondSetFirstRect = items[itemsPerSet].getBoundingClientRect();
+
+    // Width of ONE set
+    let setWidth = secondSetFirstRect.left - firstRect.left;
+
+    // Fallbacks
+    if (!setWidth || setWidth <= 0) {
+        setWidth = items[itemsPerSet].offsetLeft - items[0].offsetLeft;
+    }
+    if (!setWidth || setWidth <= 0) {
+        setWidth = gallery.scrollWidth / 5;
+    }
+
+    // Start in the Middle (Set 3 of 5).
+    gallery.scrollLeft = 2 * setWidth;
+
 
     let isPaused = false;
     let scrollSpeed = 1;
 
     function autoScroll() {
-        // 1. AUTO-MOVE: Only run if not hovering
         if (!isPaused) {
             gallery.scrollLeft += scrollSpeed;
         }
 
-        // 2. INFINITE LOOP LOGIC: Run this ALWAYS (even if paused/hovering)
-        // This fixes the "hit the wall" issue when manually dragging.
-        
-        // If scrolled past the Middle Set (to the right)
-        if (gallery.scrollLeft >= 2 * setWidth) {
-            gallery.scrollLeft = setWidth + (gallery.scrollLeft - 2 * setWidth);
+        // Loop Logic for 5 sets
+
+        // Right Limit: End of Set 3 (3 * setWidth)
+        if (gallery.scrollLeft >= 3 * setWidth - 1) {
+            gallery.scrollLeft = 2 * setWidth + (gallery.scrollLeft - 3 * setWidth);
         }
-        // If scrolled past the Middle Set (to the left)
-        else if (gallery.scrollLeft <= 0) { // Changed to 0 for smoother left-edge handling
-            gallery.scrollLeft = setWidth;
+
+        // Left Limit: Start of Set 2 (1 * setWidth)
+        else if (gallery.scrollLeft <= 1 * setWidth) {
+            gallery.scrollLeft = 2 * setWidth - (1 * setWidth - gallery.scrollLeft);
         }
-        
+
+
         requestAnimationFrame(autoScroll);
     }
 
@@ -49,4 +72,11 @@ window.addEventListener('load', () => {
 
     gallery.addEventListener('mouseenter', () => isPaused = true);
     gallery.addEventListener('mouseleave', () => isPaused = false);
+
+    // --- MOBILE TOUCH SUPPORT ---
+    gallery.addEventListener('touchstart', () => isPaused = true);
+    gallery.addEventListener('touchend', () => {
+        // Resume after a short delay to allow for Momentum Scrolling
+        setTimeout(() => { isPaused = false; }, 1000);
+    });
 });

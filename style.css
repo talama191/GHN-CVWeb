@@ -5,21 +5,25 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #F9F7F2;
-    /* Light Beige Background */
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
+
+    background: url('images/bg_gradient.png') no-repeat center center fixed;
+    background-size: cover;
     color: #333;
     line-height: 1.6;
 }
 
-/* Container for the central column layout */
+/* Container for the layout */
 .container {
-    max-width: 1200px;
+    max-width: 96%;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 40px;
 
-    /* Add this line to crop the carousel edges cleanly */
     overflow: hidden;
 }
 
@@ -28,52 +32,86 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
-    margin-bottom: 40px;
+    padding: 40px 0;
+
+    margin-bottom: 20px;
 }
 
 .logo {
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #111;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.role-badge {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #666;
+    margin-top: 4px;
+    letter-spacing: 0.5px;
 }
 
 nav a {
     text-decoration: none;
-    color: #333;
-    margin-left: 20px;
-    font-size: 0.9rem;
+    color: #444;
+    margin-left: 40px;
+
+    font-size: 0.95rem;
     font-weight: 500;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: #000;
 }
 
 /* Hero section */
 .hero-glow {
-    text-align: center;
-    padding: 120px 20px 80px;
-    background: radial-gradient(circle at 50% 30%, rgba(26, 86, 219, 0.05) 0%, transparent 60%);
+    text-align: left;
+    padding: 60px 20px 80px 0;
+    background: transparent;
+
 }
 
 .status-badge {
     display: inline-block;
-    background: rgba(26, 86, 219, 0.1);
-    color: #1a56db;
-    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    color: #333;
+    padding: 8px 20px;
     border-radius: 30px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 25px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .hero-glow h1 {
-    font-size: 4rem;
-    line-height: 1.1;
-    margin-bottom: 20px;
-    color: #050A30;
-    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    /* Base font for "Creating Digital" */
+    font-size: 5rem;
+    /* Bigger impact */
+    line-height: 1.05;
+    margin-bottom: 30px;
+    color: #111;
+    font-weight: 700;
+    letter-spacing: -2px;
 }
 
+.serif-font {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -1px;
+}
+
+/* Remove old text-gradient class if not used elsewhere */
 .text-gradient {
+    /* Kept just in case, but unused in H1 now */
     background: linear-gradient(135deg, #1a56db, #d4fc79);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -81,26 +119,62 @@ nav a {
 
 .hero-glow p {
     font-size: 1.25rem;
-    color: #666;
-    max-width: 600px;
-    margin: 0 auto 40px;
+    color: #444;
+    max-width: 500px;
+    margin: 0 0 50px 0;
+    /* Left align margin */
+    font-weight: 400;
 }
 
 .hero-actions {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    /* Left align buttons */
     gap: 20px;
+    align-items: center;
 }
 
 /* Buttons */
 .btn-primary {
-    background: #050A30;
-    color: white;
-    padding: 15px 40px;
-    border-radius: 50px;
+    background: transparent;
+    color: #111;
+    padding: 0;
     text-decoration: none;
-    font-weight: bold;
-    transition: transform 0.2s;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    display: flex;
+
+    align-items: center;
+    gap: 15px;
+}
+
+/* Create the circle arrow style from reference */
+.btn-primary::before {
+    content: '↘';
+    /* Using generic arrow or similar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #333;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover::before {
+    background: #111;
+    color: #fff;
+    transform: rotate(-45deg);
+    /* Arrow points clearer direction */
+}
+
+.btn-primary:hover {
+    transform: none;
+    /* Remove old lift */
+    box-shadow: none;
 }
 
 .btn-ghost {
@@ -111,8 +185,14 @@ nav a {
     transition: opacity 0.2s;
 }
 
-.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(5,10,48,0.15); }
-.btn-ghost:hover { opacity: 0.7; }
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(5, 10, 48, 0.15);
+}
+
+.btn-ghost:hover {
+    opacity: 0.7;
+}
 
 /* --- LARGE WHITE PLACEHOLDER --- */
 .hero-placeholder {
@@ -206,12 +286,12 @@ nav a {
     background: linear-gradient(135deg, #050A30 0%, #1a255e 100%);
     color: white;
     border-radius: 30px;
-    
+
     /* Upgrade 2: Better Padding (More vertical, less horizontal for safety) */
     padding: 60px 20px;
     text-align: center;
     margin-bottom: 60px;
-    
+
     /* Adds a subtle texture/glow behind the text */
     position: relative;
     box-shadow: 0 20px 40px rgba(5, 10, 48, 0.2);
@@ -227,7 +307,7 @@ nav a {
     transform: translateX(-50%);
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
     pointer-events: none;
 }
 
@@ -235,7 +315,8 @@ nav a {
     font-size: 2.2rem;
     margin-bottom: 40px;
     font-family: sans-serif;
-    position: relative; /* Brings text above the glow */
+    position: relative;
+    /* Brings text above the glow */
 }
 
 .tags-wrapper {
@@ -243,27 +324,33 @@ nav a {
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
-    
+
     /* Keeps the cloud centered and not too wide on big screens */
-    max-width: 800px; 
+    max-width: 800px;
     margin: 0 auto;
     position: relative;
 }
 
 .skill-tag {
     /* Upgrade 3: Glassmorphism Style */
-    background: rgba(255, 255, 255, 0.08); /* Semi-transparent */
-    border: 1px solid rgba(255, 255, 255, 0.15); /* Thin subtle border */
-    backdrop-filter: blur(5px); /* Blurs background behind tag */
-    -webkit-backdrop-filter: blur(5px); /* Safari support */
-    
-    color: #e0f7fa; /* Soft cyan-white text */
+    background: rgba(255, 255, 255, 0.08);
+    /* Semi-transparent */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    /* Thin subtle border */
+    backdrop-filter: blur(5px);
+    /* Blurs background behind tag */
+    -webkit-backdrop-filter: blur(5px);
+    /* Safari support */
+
+    color: #e0f7fa;
+    /* Soft cyan-white text */
     padding: 12px 24px;
-    border-radius: 50px; /* Pill shape */
+    border-radius: 50px;
+    /* Pill shape */
     font-weight: 500;
     font-size: 0.95rem;
     white-space: nowrap;
-    
+
     /* Smooth hover effect */
     transition: all 0.3s ease;
 }
@@ -271,7 +358,7 @@ nav a {
 .skill-tag:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     border-color: rgba(255, 255, 255, 0.4);
     color: #fff;
 }
@@ -372,51 +459,50 @@ nav a {
     cursor: pointer;
     /* Smooth transition for transform AND shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    
+
     /* Optional: Add a subtle base shadow so they don't look completely flat */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 /* Replace your existing hover rule with this */
 .gallery-item:hover {
     /* Lift up slightly more */
     transform: translateY(-12px) scale(1.02);
-    
+
     /* The Magic Shadow: Large blur, low opacity for softness */
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    
+
     /* Optional: Ensure it stays on top of neighbors */
     z-index: 10;
 }
 
 .gallery-item img {
     /* ... existing styles ... */
-    
-    /* ADD THESE LINES */
+
+    display: block;
     user-select: none;
-    -webkit-user-drag: none; /* Chrome/Safari */
-    pointer-events: none;    /* Ensures clicks pass through to the parent div if needed, 
-                                but might disable right-click save. 
-                                Safer to just use draggable="false" in HTML if you want right-click. */
+    -webkit-user-drag: none;
+    pointer-events: none;
+
 }
 
 /* --- THE STEP LADDER PATTERN (Ratio 4:5:6) --- */
 
 /* 1st, 4th, 7th... (Low Step) */
 .gallery-item:nth-child(3n+1) img {
-    height: 150px;
+    height: 250px;
     /* Base height (4) */
 }
 
 /* 2nd, 5th, 8th... (Middle Step) */
 .gallery-item:nth-child(3n+2) img {
-    height: 225px;
+    height: 325px;
     /* Taller (5) */
 }
 
 /* 3rd, 6th, 9th... (High Step) */
 .gallery-item:nth-child(3n) img {
-    height: 300px;
+    height: 400px;
     /* Tallest (6) */
 }
 
@@ -425,7 +511,8 @@ nav a {
 /* --- MOBILE FIX (The "Squished" Fix) --- */
 @media (max-width: 768px) {
     .skills-section {
-        padding: 40px 15px; /* Reduce padding to give tags more room */
+        padding: 40px 15px;
+        /* Reduce padding to give tags more room */
     }
 
     .skills-section h2 {
@@ -434,11 +521,31 @@ nav a {
     }
 
     .tags-wrapper {
-        gap: 8px; /* Tighter gap so they fit better */
+        gap: 8px;
+        /* Tighter gap so they fit better */
     }
 
     .skill-tag {
-        padding: 8px 16px; /* Smaller buttons */
-        font-size: 0.85rem; /* Slightly smaller text */
+        padding: 8px 16px;
+        /* Smaller buttons */
+        font-size: 0.85rem;
+        /* Slightly smaller text */
     }
+
+    /* Carousel 60% Width */
+    .gallery-item {
+        min-width: 60vw;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: auto !important;
+        object-fit: contain;
+    }
+
+    .gallery-row {
+        padding-left: 20vw;
+        padding-right: 20vw;
+    }
+
 }
