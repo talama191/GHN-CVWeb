@@ -16,100 +16,205 @@
 <body>
 
     <div class="container">
+        <!-- HEADER -->
         <header>
-            <div class="logo">NGUYEN HA GIANG<span class="role-badge">UX/UI Designer</span></div>
+            <div class="logo">NGUYEN HA GIANG</div>
             <nav>
                 <a href="#work">Work</a>
-                <a href="#contact">Contact</a>
+                <a href="#contact">About</a>
             </nav>
         </header>
 
-        <div class="hero-section">
-            <div class="hero-grid">
-                <div class="hero-text-side">
-                    <h1>Hi, I'm Giang. <span class="wave">👋</span></h1>
-                    <p class="hero-tagline">I build digital experiences that people love to touch.</p>
-                </div>
+        <!-- HERO SECTION -->
+        <div class="hero-section centered-hero">
+            
+            <div class="hero-badge">
+                <span class="sparkle">✨</span> Available for new projects
+            </div>
 
-                <div class="hero-bio-side">
-                    <div class="bio-card">
-                        <div class="bio-header">
-                            <div class="avatar-circle">G</div>
-                            <span class="bio-label">About Me</span>
-                        </div>
-                        <div class="bio-content">
-                            <p>I specialize in <strong>UI Design</strong> and <strong>Prototyping</strong>. I love
-                                turning complex problems into simple, beautiful interfaces.</p>
-                            <p>When I'm not designing, I'm probably looking for the best coffee in town. ☕️</p>
-                        </div>
+            <h1 class="hero-title">
+                Creating Digital <br />
+                <span class="text-gradient">Masterpieces</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                I design interfaces that users love to touch. Simple, intuitive, and engaging.
+            </p>
+
+            <!-- Bio & Contact Info Placeholders -->
+            <div class="hero-personal-info">
+                <p class="hero-bio">
+                    [Placeholder: Hi, I'm Giang. I specialize in UI Design and Prototyping. 
+                    I love turning complex problems into simple, beautiful interfaces.]
+                </p>
+                
+                <div class="hero-contact-row">
+                    <div class="contact-item">
+                        <span class="icon">📍</span> 
+                        <span>Hanoi, Vietnam</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">✉️</span> 
+                        <a href="mailto:example@email.com">example@email.com</a>
                     </div>
                 </div>
             </div>
+
         </div>
 
         <div class="future-section-gap"></div>
 
+        <!-- WORK SECTION -->
         <div class="cards-grid" id="work">
-            <div class="app-card c-1">
-                <div class="card-image-area">
-                    <div class="phone-mockup"></div>
+            
+            <!-- Card 1 -->
+            <div class="app-card">
+                <div class="card-visual">
+                    <img src="images/carousel_6.png" alt="Food App" class="app-screenshot">
                 </div>
                 <div class="card-content">
-                    <h3>Reverse Singing, Reverse Audio</h3>
-                    <p>The reverse audio app allows users to create reverse effects on their audio files easily...</p>
-                    <a href="#" class="arrow-btn">↗</a>
+                    <div class="app-header-row">
+                        <div class="app-icon-placeholder" style="background: #FF6B6B;">🍔</div> 
+                        <div class="app-info">
+                            <h3>Food Delivery UI</h3>
+                            <span class="app-category">Lifestyle & Food</span>
+                        </div>
+                    </div>
+                    <p>A vibrant and appetite-inducing interface for a local food delivery service. Focused on quick navigation.</p>
+                    <a href="#" class="google-play-btn">
+                        <svg class="play-icon" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" /></svg>
+                        <div class="btn-text"><span>GET IT ON</span><strong>Google Play</strong></div>
+                    </a>
                 </div>
             </div>
 
-            <div class="app-card c-2">
-                <div class="card-image-area">
-                    <div class="phone-mockup"></div>
+            <!-- Card 2 -->
+            <div class="app-card">
+                <div class="card-visual">
+                    <img src="images/carousel_2.png" alt="Quotes App" class="app-screenshot">
                 </div>
                 <div class="card-content">
-                    <h3>Fake Call Santa - Prank Call</h3>
-                    <p>This is a great entertainment tool for parents to create fake calls for their children...</p>
-                    <a href="#" class="arrow-btn">↗</a>
+                    <div class="app-header-row">
+                        <div class="app-icon-placeholder" style="background: #FFA502;">❝</div>
+                        <div class="app-info">
+                            <h3>Daily Quotes</h3>
+                            <span class="app-category">Productivity</span>
+                        </div>
+                    </div>
+                    <p>Start your day with motivation. A clean typography-focused design to help users focus on what matters.</p>
+                    <a href="#" class="google-play-btn">
+                        <svg class="play-icon" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" /></svg>
+                        <div class="btn-text"><span>GET IT ON</span><strong>Google Play</strong></div>
+                    </a>
                 </div>
             </div>
 
-            <div class="app-card c-3">
-                <div class="card-image-area">
-                    <div class="phone-mockup"></div>
+            <!-- Card 3 -->
+            <div class="app-card">
+                <div class="card-visual">
+                    <img src="images/carousel_1.png" alt="E-commerce App" class="app-screenshot">
                 </div>
                 <div class="card-content">
-                    <h3>Prank Ghost Detector & Scanner</h3>
-                    <p>The ghost detector and scanner radar simulator app is tailored for users who enjoy spooky
-                        experiences...</p>
-                    <a href="#" class="arrow-btn">↗</a>
+                    <div class="app-header-row">
+                        <div class="app-icon-placeholder" style="background: #1e3a8a;">🛍️</div>
+                        <div class="app-info">
+                            <h3>BOGO Brand</h3>
+                            <span class="app-category">E-Commerce</span>
+                        </div>
+                    </div>
+                    <p>A playful branding exploration turned into a mobile shopping experience. High contrast colors for high engagement.</p>
+                    <a href="#" class="google-play-btn">
+                        <svg class="play-icon" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" /></svg>
+                        <div class="btn-text"><span>GET IT ON</span><strong>Google Play</strong></div>
+                    </a>
                 </div>
             </div>
+
         </div>
 
+        <!-- NEW CATEGORIZED SKILLS SECTION -->
         <div class="skills-section">
-            <h2>My Primary Skill</h2>
-            <div class="tags-wrapper">
-                <span class="skill-tag">User Interface Design</span>
-                <span class="skill-tag">Prototyping</span>
-                <span class="skill-tag">Wireframing</span>
-                <span class="skill-tag">Design Systems</span>
-                <span class="skill-tag">User Research</span>
-                <span class="skill-tag">Photoshop</span>
-                <span class="skill-tag">HTML - CSS (basic)</span>
-                <span class="skill-tag">Humor</span>
-                <span class="skill-tag">Teamwork</span>
-                <span class="skill-tag">Constant Learning</span>
+            <h2>My Toolbox</h2>
+            
+            <div class="skills-grid-layout">
+                
+                <!-- Category 1: Tech/Hard Skills -->
+                <div class="skill-category">
+                    <div class="category-header">
+                        <span class="cat-icon">🛠️</span>
+                        <h3>Technical Skills</h3>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="check">✓</span> User Interface Design
+                        </div>
+                        <div class="skill-item">
+                            <span class="check">✓</span> Prototyping (Figma)
+                        </div>
+                        <div class="skill-item">
+                            <span class="check">✓</span> Wireframing
+                        </div>
+                        <div class="skill-item">
+                            <span class="check">✓</span> Design Systems
+                        </div>
+                        <div class="skill-item">
+                            <span class="check">✓</span> User Research
+                        </div>
+                        <div class="skill-item">
+                            <span class="check">✓</span> Photoshop / Adobe Suite
+                        </div>
+                        <div class="skill-item">
+                            <span class="check">✓</span> HTML - CSS (Basic)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 2: Soft Skills -->
+                <div class="skill-category">
+                    <div class="category-header">
+                        <span class="cat-icon">🤝</span>
+                        <h3>Soft Skills</h3>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="check">✓</span> Teamwork & Collaboration
+                        </div>
+                        <div class="skill-item">
+                            <span class="check">✓</span> Problem Solving
+                        </div>
+                        <div class="skill-item">
+                            <span class="check">✓</span> Communication
+                        </div>
+                        <div class="skill-item">
+                            <span class="check">✓</span> Constant Learning
+                        </div>
+                        <div class="skill-item">
+                            <span class="check">✓</span> Empathy
+                        </div>
+                        <div class="skill-item">
+                            <span class="check">✓</span> Adaptability
+                        </div>
+                        <div class="skill-item">
+                            <span class="check">✓</span> Humor & Positivity
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
         <footer class="connect-section" id="contact">
-            <span class="icon-envelope">✉️</span>
+            <!-- Email Lottie -->
+            <a href="mailto:example@email.com" class="email-gif-wrapper">
+                <img src="Assets/email.gif" alt="Email Me" class="email-gif-icon">
+            </a>
+            
             <h2>Let's connect!</h2>
-            <p class="sub-text">If you have any questions, want to discuss ideas, or simply want to chat, feel free to
-                reach out.</p>
+            <p class="sub-text">If you have any questions, want to discuss ideas, or simply want to chat, feel free to reach out.</p>
 
             <a href="#" class="btn-download">Download Resume ⇩</a>
             <span class="or-text">OR</span>
-            <a href="#" class="email-link">Email for me</a>
+            <a href="mailto:example@email.com" class="email-link">Email for me</a>
 
             <div class="bottom-links">
                 <a href="#">Dribbble</a>
@@ -127,5 +232,4 @@
     </div>
 
 </body>
-
 </html>
