@@ -104,7 +104,7 @@ nav a:hover {
     border-radius: 50px;
     margin-bottom: 25px;
     border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
     backdrop-filter: blur(5px);
 }
 
@@ -145,11 +145,11 @@ nav a:hover {
 .hero-personal-info {
     max-width: 650px;
     margin: 0 auto;
-    background: rgba(255,255,255,0.4);
+    background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(5px);
     border-radius: 20px;
     padding: 25px;
-    border: 1px solid rgba(255,255,255,0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .hero-bio {
@@ -185,11 +185,88 @@ nav a:hover {
     color: #4f46e5;
 }
 
+/* 4.5 Hero Buttons (UPDATED ARROW STYLE) */
+.hero-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.btn-hero-primary {
+    background-color: #1a56db;
+    color: white;
+    padding: 10px 10px 10px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 10px 25px rgba(26, 86, 219, 0.3);
+
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Circle Icon Container */
+.btn-icon {
+    background-color: white;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a56db;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    flex-shrink: 0;
+}
+
+.btn-icon svg {
+    width: 20px;
+    height: 20px;
+    /* Default: Rotated -45deg to point Top-Right */
+    transform: rotate(-45deg);
+    transition: transform 0.3s ease;
+}
+
+.btn-hero-primary:hover {
+    background-color: #1545ad;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(26, 86, 219, 0.4);
+}
+
+.btn-hero-primary:hover .btn-icon svg {
+    /* Hover: Rotate back to 0deg to point Right */
+    transform: rotate(0deg);
+}
+
+.btn-hero-primary:active {
+    background-color: #0f3282;
+    transform: translateY(0);
+    box-shadow: 0 5px 15px rgba(26, 86, 219, 0.3);
+}
+
+.btn-hero-secondary {
+    color: #050A30;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 20px;
+    transition: color 0.2s;
+}
+
+.btn-hero-secondary:hover {
+    color: #4f46e5;
+}
+
+
 /* =========================================
    5. WORK / CARDS GRID
    ========================================= */
 .cards-grid {
-    scroll-margin-top: 60px; 
+    scroll-margin-top: 60px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 40px;
@@ -199,17 +276,17 @@ nav a:hover {
 .app-card {
     background: #fff;
     border-radius: 24px;
-    overflow: hidden; 
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(0,0,0,0.03);
+    border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .app-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 /* Image Section */
@@ -223,12 +300,12 @@ nav a:hover {
 .app-screenshot {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover;
     transition: transform 0.5s ease;
 }
 
 .app-card:hover .app-screenshot {
-    transform: scale(1.05); 
+    transform: scale(1.05);
 }
 
 /* Content Section */
@@ -282,7 +359,7 @@ nav a:hover {
     color: #555;
     margin-bottom: 25px;
     line-height: 1.5;
-    flex-grow: 1; 
+    flex-grow: 1;
 }
 
 /* Google Play Button Style */
@@ -363,19 +440,22 @@ nav a:hover {
 .skills-grid-layout {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 60px; /* Increased gap for better separation */
+    gap: 60px;
+    /* Increased gap for better separation */
     max-width: 900px;
     margin: 0 auto;
     position: relative;
-    text-align: left; 
+    text-align: left;
 }
 
 .skill-category h3 {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #fff; /* White title for contrast on dark background */
+    color: #fff;
+    /* White title for contrast on dark background */
     margin-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Subtle underline */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    /* Subtle underline */
     padding-bottom: 10px;
 }
 
@@ -388,13 +468,15 @@ nav a:hover {
 .skill-pill {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50px; /* Fully rounded pill shape */
+    border-radius: 50px;
+    /* Fully rounded pill shape */
     padding: 8px 16px;
     font-size: 0.95rem;
     color: #fff;
     display: inline-flex;
     align-items: center;
-    gap: 8px; /* Space between icon and text */
+    gap: 8px;
+    /* Space between icon and text */
     transition: all 0.3s ease;
     backdrop-filter: blur(5px);
 }
@@ -402,7 +484,7 @@ nav a:hover {
 .skill-pill:hover {
     background: rgba(255, 255, 255, 0.25);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 
@@ -427,15 +509,61 @@ nav a:hover {
     margin-bottom: 30px;
 }
 
+/* UPDATED DOWNLOAD BUTTON COLORS */
 .btn-download {
     background-color: #1a56db;
+    /* Main Blue */
     color: white;
-    padding: 12px 30px;
+    padding: 10px 10px 10px 28px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: bold;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
     margin-bottom: 15px;
+    transition: all 0.2s ease;
+    box-shadow: 0 5px 15px rgba(26, 86, 219, 0.2);
+}
+
+.btn-icon-small {
+    background-color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a56db;
+    /* Icon color matches button bg */
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.btn-icon-small svg {
+    width: 18px;
+    height: 18px;
+    /* DEFAULT: Point TOP-RIGHT */
+    transform: rotate(-45deg);
+    transition: transform 0.3s ease;
+}
+
+.btn-download:hover .btn-icon-small svg {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+}
+
+.btn-download:hover {
+    background-color: #1545ad;
+    /* Hover Blue */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(26, 86, 219, 0.3);
+}
+
+.btn-download:active {
+    background-color: #0f3282;
+    /* Press Blue */
+    transform: translateY(0);
 }
 
 .or-text {
@@ -479,43 +607,13 @@ nav a:hover {
 }
 
 .email-gif-icon {
-    width: 64px; /* Adjust this to make it bigger/smaller */
+    width: 64px;
+    /* Adjust this to make it bigger/smaller */
     height: auto;
     display: block;
 }
 
-/* Sticky Button */
-.sticky-cta {
-    position: fixed;
-    /* RAISED FROM 30px TO 60px */
-    bottom: 60px; 
-    left: 50%;
-    transform: translateX(-50%);
-    background: #1a56db;
-    color: white;
-    text-decoration: none;
-    padding: 15px 40px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 50px;
-    box-shadow: 0 15px 35px rgba(26, 86, 219, 0.35);
-    z-index: 1000;
-    opacity: 1;
-    pointer-events: all;
-    transition: all 0.4s ease;
-}
-
-.sticky-cta:hover {
-    transform: translateX(-50%) translateY(-5px);
-    box-shadow: 0 20px 45px rgba(26, 86, 219, 0.5);
-}
-
-.sticky-cta.hidden {
-    opacity: 0;
-    pointer-events: none;
-    /* DROPS FURTHER DOWN WHEN HIDDEN (100px instead of 20px) */
-    transform: translateX(-50%) translateY(100px);
-}
+/* REMOVED .sticky-cta STYLES */
 
 /* =========================================
    8. MOBILE RESPONSIVENESS
@@ -527,7 +625,7 @@ nav a:hover {
 
     header {
         position: relative;
-        padding: 15px 0; 
+        padding: 15px 0;
         flex-direction: column;
         gap: 15px;
     }
@@ -546,33 +644,45 @@ nav a:hover {
     .hero-section {
         min-height: 100vh;
         justify-content: flex-start;
-        padding: 60px 20px 80px; 
+        padding: 60px 20px 80px;
     }
 
     .hero-title {
-        font-size: 2.2rem; 
+        font-size: 2.2rem;
         margin-bottom: 12px;
-        word-break: break-word; 
+        word-break: break-word;
     }
-    
+
     .hero-subtitle {
         font-size: 1rem;
-        margin: 0 auto 20px auto; 
+        margin: 0 auto 20px auto;
     }
 
     .hero-personal-info {
         padding: 15px 15px;
-        width: 100%; 
+        width: 100%;
     }
 
     .hero-bio {
         margin-bottom: 15px;
         font-size: 0.95rem;
     }
-    
+
     .hero-contact-row {
         flex-direction: column;
         gap: 8px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 25px;
+    }
+
+    .btn-hero-primary {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
     }
 
     .future-section-gap {
@@ -590,15 +700,9 @@ nav a:hover {
     }
 
     .skills-grid-layout {
-        gap: 30px; 
-        grid-template-columns: 1fr; /* Stack categories vertically on mobile */
-    }
-
-    /* Sticky Button */
-    .sticky-cta {
-        padding: 12px 30px;
-        font-size: 0.95rem;
-        bottom: 50px; 
+        gap: 30px;
+        grid-template-columns: 1fr;
+        /* Stack categories vertically on mobile */
     }
 }
 
@@ -606,16 +710,21 @@ nav a:hover {
    9. SMALL PHONE SPECIFIC (iPhone SE, etc.)
    ========================================= */
 @media (max-width: 380px) {
-    .sticky-cta {
-        display: none !important;
-    }
-    
     .hero-section {
-        padding-top: 40px;
-        padding-bottom: 40px;
+        /* UPDATED: Further reduced padding to ensure button visibility */
+        padding-top: 15px;
+        padding-bottom: 20px;
+        /* Allow height to be auto if content overflows, but try to keep it 100vh if possible */
+        min-height: auto;
     }
-    
+
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        /* Even smaller for tiny screens */
+    }
+
+    header {
+        padding-bottom: 10px;
+        /* Tighten up header space */
     }
 }
