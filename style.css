@@ -363,9 +363,6 @@ nav a:hover {
     /* Fixed height for the hero composition */
     position: relative;
     overflow: visible;
-    /* Changed to visible so image doesn't clip if scaled */
-
-    box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.25);
 
     /* Center visual content */
     display: flex;
@@ -391,6 +388,7 @@ nav a:hover {
 /* Hover Effect on the image */
 .featured-overlap-card:hover .visual-full-image {
     transform: scale(1.02);
+    box-shadow: -20px 20px 50px rgba(152, 185, 255, 0.733);
 }
 
 /* Typography Matches */
@@ -1071,26 +1069,22 @@ nav a:hover {
 
     /* Text Part (Bottom) */
     .overlap-text-content-container {
-        width: 100%;
+        width: 95%;
         z-index: 1;
         margin: 0;
         margin-top: -60px;
-
-        background-color: transparent;
 
         box-shadow: none;
     }
 
 
     .overlap-text-content {
-        /*no background color*/
         background-color: transparent;
-        box-shadow: none;
 
         width: 100%;
         height: 250px;
 
-        border-radius: 30px;
+        border-radius: 5px;
         /* Fully rounded */
         /* REDUCED HEIGHT: Much less top/bottom padding */
         padding: 90px 10px 40px 10px;
