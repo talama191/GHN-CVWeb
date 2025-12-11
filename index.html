@@ -11,6 +11,8 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- Lottie Player Script -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 
 <body>
@@ -27,47 +29,47 @@
 
         <!-- HERO SECTION -->
         <div class="hero-section centered-hero">
-            
+
             <div class="hero-badge">
                 <span class="sparkle">✨</span> Available for new projects
             </div>
 
+            <!-- HERO TITLE -->
             <h1 class="hero-title">
-                Creating Digital <br />
-                <span class="text-gradient">Masterpieces</span>
+                NGUYEN HA GIANG <br />
+                <span class="text-gradient">UI/UX Designer</span>
             </h1>
 
             <p class="hero-subtitle">
                 I design interfaces that users love to touch. Simple, intuitive, and engaging.
             </p>
 
-            <!-- Bio & Contact Info Placeholders -->
             <div class="hero-personal-info">
                 <p class="hero-bio">
-                    [Placeholder: Hi, I'm Giang. I specialize in UI Design and Prototyping. 
+                    [Placeholder: Hi, I'm Giang. I specialize in UI Design and Prototyping.
                     I love turning complex problems into simple, beautiful interfaces.]
                 </p>
-                
+
                 <div class="hero-contact-row">
                     <div class="contact-item">
-                        <span class="icon">📍</span> 
+                        <span class="icon">📍</span>
                         <span>Hanoi, Vietnam</span>
                     </div>
                     <div class="contact-item">
-                        <span class="icon">✉️</span> 
+                        <span class="icon">✉️</span>
                         <a href="mailto:example@email.com">example@email.com</a>
                     </div>
                 </div>
             </div>
 
-            <!-- BUTTON WITH ARROW -->
             <div class="hero-actions">
                 <a href="#work" class="btn-hero-primary">
                     <span>See My Work</span>
                     <span class="btn-icon">
-                        <!-- Arrow pointing right (will be rotated in CSS) -->
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                         </svg>
                     </span>
                 </a>
@@ -77,9 +79,60 @@
 
         <div class="future-section-gap"></div>
 
-        <!-- WORK SECTION -->
+        <!-- FEATURED SECTION -->
+        <section class="featured-work-section" id="featured">
+            <h2 class="featured-title">My recent work</h2>
+
+            <div class="featured-container">
+                <div class="featured-overlap-card scroll-hidden animate-from-left">
+                    <div class="overlap-text-content-container">
+                        <div class="overlap-text-content">
+                            <span class="wedo-label">Case study</span>
+                            <h3 class="wedo-title">Wedo<br>Redesign</h3>
+                            <a href="#" class="wedo-link">READ MORE</a>
+                        </div>
+                    </div>
+
+                    <div class="overlap-visual-content-container">
+                        <div class="overlap-visual-content">
+                            <div class="phones-wrapper">
+                                <div class="phone-comp phone-back">
+                                    <img src="images/phone_2.png" class="phone-screen" alt="Front Screen">
+                                </div>
+                                <div class="phone-comp phone-front">
+                                    <img src="images/phone_1.png" class="phone-screen" alt="Back Screen">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="featured-item scroll-hidden animate-from-right reversed-layout">
+                    <div class="f-content">
+                        <h3>E-Commerce Mobile App</h3>
+                        <p>Optimized user flow for shopping on the go, resulting in a 20% conversion increase.</p>
+                    </div>
+                    <div class="f-image">
+                        <img src="images/square_bg_2.jpg" alt="Featured Project 2">
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="featured-item scroll-hidden animate-from-left">
+                    <div class="f-image">
+                        <img src="images/square_bg_3.jpg" alt="Featured Project 3">
+                    </div>
+                    <div class="f-content">
+                        <h3>Brand Identity System</h3>
+                        <p>A complete visual language including typography, color palettes, and usage guidelines.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- MAIN WORK GRID -->
         <div class="cards-grid" id="work">
-            
             <!-- Card 1 -->
             <div class="app-card">
                 <div class="card-visual">
@@ -87,15 +140,19 @@
                 </div>
                 <div class="card-content">
                     <div class="app-header-row">
-                        <div class="app-icon-placeholder" style="background: #FF6B6B;">🍔</div> 
+                        <div class="app-icon-placeholder" style="background: #FF6B6B;">🍔</div>
                         <div class="app-info">
                             <h3>Food Delivery UI</h3>
                             <span class="app-category">Lifestyle & Food</span>
                         </div>
                     </div>
-                    <p>A vibrant and appetite-inducing interface for a local food delivery service. Focused on quick navigation.</p>
+                    <p>A vibrant and appetite-inducing interface for a local food delivery service. Focused on quick
+                        navigation.</p>
                     <a href="#" class="google-play-btn">
-                        <svg class="play-icon" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" /></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor"
+                                d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                        </svg>
                         <div class="btn-text"><span>GET IT ON</span><strong>Google Play</strong></div>
                     </a>
                 </div>
@@ -114,9 +171,13 @@
                             <span class="app-category">Productivity</span>
                         </div>
                     </div>
-                    <p>Start your day with motivation. A clean typography-focused design to help users focus on what matters.</p>
+                    <p>Start your day with motivation. A clean typography-focused design to help users focus on what
+                        matters.</p>
                     <a href="#" class="google-play-btn">
-                        <svg class="play-icon" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" /></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor"
+                                d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                        </svg>
                         <div class="btn-text"><span>GET IT ON</span><strong>Google Play</strong></div>
                     </a>
                 </div>
@@ -135,9 +196,13 @@
                             <span class="app-category">E-Commerce</span>
                         </div>
                     </div>
-                    <p>A playful branding exploration turned into a mobile shopping experience. High contrast colors for high engagement.</p>
+                    <p>A playful branding exploration turned into a mobile shopping experience. High contrast colors for
+                        high engagement.</p>
                     <a href="#" class="google-play-btn">
-                        <svg class="play-icon" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" /></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor"
+                                d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                        </svg>
                         <div class="btn-text"><span>GET IT ON</span><strong>Google Play</strong></div>
                     </a>
                 </div>
@@ -145,13 +210,10 @@
 
         </div>
 
-        <!-- NEW CATEGORIZED SKILLS SECTION -->
+        <!-- SKILLS SECTION -->
         <div class="skills-section">
             <h2>My Toolbox</h2>
-            
             <div class="skills-grid-layout">
-                
-                <!-- Category 1: Tech/Hard Skills -->
                 <div class="skill-category">
                     <h3>Technical Skills</h3>
                     <div class="skill-tags-container">
@@ -164,8 +226,6 @@
                         <span class="skill-pill">💻 HTML/CSS</span>
                     </div>
                 </div>
-
-                <!-- Category 2: Soft Skills -->
                 <div class="skill-category">
                     <h3>Soft Skills</h3>
                     <div class="skill-tags-container">
@@ -178,24 +238,25 @@
                         <span class="skill-pill">😄 Positivity</span>
                     </div>
                 </div>
-
             </div>
         </div>
 
         <footer class="connect-section" id="contact">
-            <!-- Email Lottie -->
-            <a href="mailto:example@email.com" class="email-gif-wrapper">
-                <img src="Assets/email.gif" alt="Email Me" class="email-gif-icon">
-            </a>
-            
+            <div class="email-gif-wrapper">
+                <lottie-player src="Assets/email.json" background="transparent" speed="1"
+                    style="width: 100px; height: 100px;" loop hover>
+                </lottie-player>
+            </div>
+
             <h2>Let's connect!</h2>
-            <p class="sub-text">If you have any questions, want to discuss ideas, or simply want to chat, feel free to reach out.</p>
+            <p class="sub-text">If you have any questions, want to discuss ideas, or simply want to chat, feel free to
+                reach out.</p>
 
             <a href="#" class="btn-download">
                 <span>Download Resume</span>
                 <span class="btn-icon-small">
-                    <!-- Standard Right Arrow (will rotate in CSS) -->
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                        stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>
                 </span>
@@ -215,4 +276,5 @@
     </div>
 
 </body>
+
 </html>

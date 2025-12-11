@@ -1,30 +1,77 @@
 window.addEventListener('load', () => {
 
-    // --- STICKY BUTTON LOGIC ---
-    const stickyBtn = document.getElementById('sticky-cta');
-    const workSection = document.getElementById('work');
+    // --- DRAGGABLE SKILLS LOGIC ---
+    const skills = document.querySelectorAll('.skill-pill');
+    
+    skills.forEach(skill => {
+        let isDragging = false;
+        let startX, startY;
+        let initialTranslateX = 0;
+        let initialTranslateY = 0;
+        let currentTranslateX = 0;
+        let currentTranslateY = 0;
 
-    // Only run if elements exist
-    if (stickyBtn && workSection) {
-
-        // We use a scroll event listener for more precise control than IntersectionObserver
-        // in this specific "scroll below X" scenario.
-        window.addEventListener('scroll', () => {
-            // Get the position of the work section relative to the viewport
-            const workSectionTop = workSection.getBoundingClientRect().top;
-
-            // Define a trigger point.
-            // When the top of the work section is near the bottom of the screen (e.g., 200px away),
-            // we consider the user has "reached" the work section.
-            const triggerPoint = window.innerHeight - 100;
-
-            if (workSectionTop < triggerPoint) {
-                // User has scrolled down to (or past) the work section
-                stickyBtn.classList.add('hidden');
+        const dragStart = (e) => {
+            if (e.type === 'touchstart') {
+                startX = e.touches[0].clientX - initialTranslateX;
+                startY = e.touches[0].clientY - initialTranslateY;
             } else {
-                // User is above the work section
-                stickyBtn.classList.remove('hidden');
+                startX = e.clientX - initialTranslateX;
+                startY = e.clientY - initialTranslateY;
+            }
+            isDragging = true;
+            skill.classList.add('is-dragging');
+        };
+
+        const drag = (e) => {
+            if (!isDragging) return;
+            e.preventDefault(); 
+            let currentX, currentY;
+            if (e.type === 'touchmove') {
+                currentX = e.touches[0].clientX;
+                currentY = e.touches[0].clientY;
+            } else {
+                currentX = e.clientX;
+                currentY = e.clientY;
+            }
+            currentTranslateX = currentX - startX;
+            currentTranslateY = currentY - startY;
+            setTranslate(currentTranslateX, currentTranslateY, skill);
+        };
+
+        const dragEnd = () => {
+            initialTranslateX = currentTranslateX;
+            initialTranslateY = currentTranslateY;
+            isDragging = false;
+            skill.classList.remove('is-dragging');
+        };
+
+        const setTranslate = (xPos, yPos, el) => {
+            el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+        };
+
+        skill.addEventListener('mousedown', dragStart);
+        skill.addEventListener('touchstart', dragStart, { passive: false });
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('touchmove', drag, { passive: false });
+        document.addEventListener('mouseup', dragEnd);
+        document.addEventListener('touchend', dragEnd);
+    });
+
+    // --- SCROLL ANIMATION OBSERVER ---
+    // Selects elements with .scroll-hidden (added in CSS)
+    const animatedElements = document.querySelectorAll('.scroll-hidden');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add class to make visible and animate
+                entry.target.classList.add('scroll-visible');
             }
         });
-    }
+    }, {
+        threshold: 0.2 // Animation triggers when 20% of the element is visible
+    });
+
+    animatedElements.forEach(el => observer.observe(el));
 });
