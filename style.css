@@ -23,8 +23,6 @@ body {
    2. LAYOUT & CONTAINER
    ========================================= */
 .container {
-    max-width: 96%;
-    margin: 0 auto;
     padding: 0 40px;
     overflow: hidden;
     position: relative;
@@ -33,6 +31,15 @@ body {
 /* Spacer for visual gaps (Desktop only) */
 .future-section-gap {
     height: 100px;
+}
+
+/* Divider for Sections/Items */
+.item-separator {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+    width: 60%;
+    margin: 80px auto;
+    border: none;
 }
 
 /* =========================================
@@ -79,6 +86,8 @@ nav a:hover {
    4. HERO SECTION
    ========================================= */
 .hero-section {
+    margin-left: -150px;
+    margin-right: -150px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -87,8 +96,8 @@ nav a:hover {
     text-align: center;
     padding: 0 20px;
     position: relative;
-    max-width: 900px;
-    margin: 0 auto;
+    /* Soft Gradient Background */
+    background: radial-gradient(circle at 50% 50%, #F5F7FF 0%, #FFFFFF 70%);
 }
 
 .hero-badge {
@@ -408,6 +417,26 @@ nav a:hover {
     border-bottom: 2px solid #2563EB;
     width: fit-content;
     padding-bottom: 5px;
+}
+
+/* --- TAGS STYLING --- */
+.project-tags {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #f0f0f0;
+    color: #444;
+    padding: 6px 14px;
+    border-radius: 8px;
+    /* Slightly rounded as per request */
+    font-size: 0.85rem;
+    font-weight: 600;
 }
 
 /* --- REVERSED LAYOUT (ZIG-ZAG) --- */
@@ -856,7 +885,7 @@ nav a:hover {
    ========================================= */
 @media (max-width: 768px) {
     .container {
-        padding: 0 20px;
+        padding: 0 0px;
     }
 
     header {
@@ -874,12 +903,6 @@ nav a:hover {
     nav a {
         margin: 0 15px;
         display: inline-block;
-    }
-
-    .hero-section {
-        min-height: 100vh;
-        justify-content: flex-start;
-        padding: 60px 20px 80px;
     }
 
     .hero-title {
@@ -964,7 +987,7 @@ nav a:hover {
     .hero-section {
         padding-top: 15px;
         padding-bottom: 20px;
-        min-height: auto;
+        min-height: 90vh;
     }
 
     .hero-title {
@@ -981,6 +1004,14 @@ nav a:hover {
 /* --- RESPONSIVE / MOBILE FIXES --- */
 @media (max-width: 1100px) {
 
+
+    .hero-section {
+        max-width: 100%;
+        margin: 0 auto;
+        min-height: 90vh;
+        justify-content: center;
+    }
+
     /* Tablet & Mobile: Switch to Stacked Layout */
     .featured-overlap-card {
         display: flex;
@@ -992,6 +1023,11 @@ nav a:hover {
         width: 100%;
         align-items: center;
         /* Center items */
+        padding-bottom: 0px;
+    }
+
+    .featured-container {
+        gap: 10px;
     }
 
     .featured-overlap-card:hover .visual-full-image {
@@ -1032,23 +1068,73 @@ nav a:hover {
         /*no background color*/
         background-color: transparent;
         box-shadow: none;
-        border-radius: 30px;
 
         width: 100%;
-        text-align: center;
-        align-items: center;
         height: 250px;
 
         border-radius: 30px;
         /* Fully rounded */
         /* REDUCED HEIGHT: Much less top/bottom padding */
-        padding: 90px 25px 40px 25px;
+        padding: 90px 10px 40px 10px;
 
         min-height: auto;
-        width: 100%;
-        text-align: center;
-        align-items: center;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
+
+    /* Standard Overlap Mobile (Both Items) -> LEFT ALIGN FORCE */
+    .overlap-text-content {
+        text-align: left !important;
+        align-items: flex-start !important;
+    }
+
+    /* PASTE THIS INSIDE YOUR EXISTING @MEDIA BLOCK */
+
+    .project-tags,
+    .overlap-text-content .project-tags {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        /* STOPS tags from dropping to next line */
+        justify-content: left;
+        width: 100% !important;
+        margin-left: 0 !important;
+        gap: 4px;
+        /* Tighten space between tags */
+    }
+
+    .tag-pill {
+        height: 30px;
+        white-space: nowrap !important;
+        /* STOPS text inside tag from breaking */
+        font-size: 0.65rem !important;
+        /* Make text smaller */
+        padding: 4px 8px !important;
+        /* Reduce padding */
+
+        /* PREVENTS the tag from being squashed */
+        flex-shrink: 0 !important;
+        min-width: auto !important;
+    }
+
+    /* Override any reversed-overlap specifics to match standard on mobile */
+    .reversed-overlap .overlap-text-content {
+        text-align: left !important;
+        align-items: flex-start !important;
+    }
+
+    .reversed-overlap .overlap-text-content .project-tags {
+        justify-content: flex-start !important;
+    }
+
+    /* Typography Matches on Mobile */
+    .wedo-label {
+        /* Removed as we use tags now, but keeping for safety if reused */
+        display: none;
+    }
+
 
     /* Typography Matches */
     .wedo-label {
