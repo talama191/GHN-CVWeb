@@ -768,10 +768,12 @@ nav a:not(.nav-btn):hover {
     border-radius: 20px;
     /* Slightly tighter than card */
     overflow: hidden;
-    /* Background color is set inline in HTML */
+    /* Background color removed */
     display: flex;
     align-items: center;
     justify-content: center;
+    background: transparent !important;
+    /* Force transparent */
 }
 
 .card-visual-content {
@@ -780,19 +782,22 @@ nav a:not(.nav-btn):hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px;
+    padding: 0;
+    /* Remove padding to let icon fill */
 }
 
 .app-mockup-image {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15));
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Fill the space */
+    border-radius: 20px;
+    /* Match wrapper radius */
     transition: transform 0.4s ease;
 }
 
 .app-card:hover .app-mockup-image {
-    transform: scale(1.05) translateY(-3px);
+    transform: scale(1.05);
 }
 
 /* --- FLOATING ACTION BUTTON --- */
@@ -921,45 +926,112 @@ nav a:not(.nav-btn):hover {
 
 .skills-grid-layout {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 60px;
-    max-width: 1000px;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 1800px;
+    /* Increased max-width for side-by-side */
     margin: 0 auto;
     position: relative;
     text-align: left;
 }
 
+/* DESKTOP: Side-by-Side */
+@media (min-width: 1024px) {
+    .skills-grid-layout {
+        flex-direction: row;
+        gap: 60px;
+        align-items: flex-start;
+    }
+}
+
+.skill-category {
+    width: 100%;
+    flex: 1;
+    /* Equal width on desktop */
+}
+
 .skill-category h3 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #fff;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     pointer-events: none;
+    font-family: 'MomoTrustDisplay', sans-serif;
 }
 
-.skill-tags-container {
+.skills-card-grid {
+    display: grid;
+    /* Slightly wider cards for better breathing room */
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 24px;
+}
+
+.skill-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 28px;
+    padding: 24px 20px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    transition: transform 0.2s, background 0.2s;
+    cursor: default;
+    height: 100%;
 }
 
-.skill-pill {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50px;
-    padding: 8px 16px;
-    font-size: 0.95rem;
-    color: #fff;
-    display: inline-flex;
+.skill-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.skill-icon-box {
+    width: 80px;
+    /* Increased from 56px */
+    height: 80px;
+    /* Increased from 56px */
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    display: flex;
     align-items: center;
-    gap: 8px;
-    transition: transform 0.1s linear, background 0.3s ease, box-shadow 0.3s ease;
-    backdrop-filter: blur(5px);
-    cursor: default;
-    position: relative;
+    justify-content: center;
+    font-size: 36px;
+    /* Increased emoji size */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s;
+}
+
+.skill-card:hover .skill-icon-box {
+    transform: scale(1.05);
+    /* Subtle pop on hover */
+}
+
+.skill-icon-box svg {
+    width: 40px;
+    height: 40px;
+    fill: currentColor;
+    color: #fff;
+}
+
+.skill-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    line-height: 1.3;
+}
+
+/* Image Icon Styling */
+/* Image Icon Styling */
+.skill-icon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 18px;
+    /* Clean fit */
 }
 
 .skill-pill:hover {
