@@ -8,6 +8,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'MomoTrustDisplay';
+    src: url('Assets/MomoTrustDisplay-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* =========================================
    1. RESET & GLOBAL STYLES
    ========================================= */
@@ -22,7 +29,7 @@ html {
 }
 
 body {
-    font-family: 'Inter', Helvetica, Arial, sans-serif;
+    font-family: 'MomoTrustDisplay', Helvetica, Arial, sans-serif;
     background-color: #F7F3EB;
     color: #333;
     line-height: 1.6;
@@ -40,7 +47,8 @@ body {
 
 /* Spacer for visual gaps (Desktop only) */
 .future-section-gap {
-    height: 100px;
+    height: 60px;
+    /* Reduced from 100px */
 }
 
 /* Divider for Sections/Items */
@@ -92,7 +100,29 @@ nav a {
     transition: color 0.2s;
 }
 
-nav a:hover {
+.nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px;
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 50px;
+    color: #050A30;
+    font-weight: 600;
+    margin-left: 30px;
+    transition: all 0.2s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.nav-btn:hover {
+    background-color: #050A30;
+    color: #fff;
+    border-color: #050A30;
+    transform: translateY(-2px);
+}
+
+nav a:not(.nav-btn):hover {
     color: #000;
 }
 
@@ -112,22 +142,55 @@ nav a:hover {
     position: relative;
     /* Soft Gradient Background */
     background: radial-gradient(circle at 50% 50%, #F5F7FF 0%, #FFFFFF 70%);
+    /* FIX: Hero visibility - Full Height on PC */
+    min-height: 100vh;
+    padding-top: 100px;
+    /* Ensure content clears header */
+    padding-bottom: 60px;
 }
 
 .hero-badge {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background-color: rgba(230, 230, 250, 0.6);
-    color: #4f46e5;
-    font-size: 0.9rem;
-    font-weight: 600;
-    padding: 8px 20px;
+    gap: 10px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
     border-radius: 50px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #050A30;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     margin-bottom: 25px;
     border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-    backdrop-filter: blur(5px);
+}
+
+/* Pulsing Status Light */
+.pulsing-status {
+    width: 12px;
+    height: 12px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    }
 }
 
 .sparkle {
@@ -215,8 +278,20 @@ nav a:hover {
     transition: color 0.2s;
 }
 
-.contact-item a:hover {
+.contact-item a:hover,
+.location-link:hover {
     color: #4f46e5;
+}
+
+.location-link {
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px dashed rgba(5, 10, 48, 0.3);
+    transition: all 0.2s;
+}
+
+.location-link:hover {
+    border-bottom-style: solid;
 }
 
 .hero-actions {
@@ -234,6 +309,8 @@ nav a:hover {
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    /* REVERT: Clean font */
     transition: all 0.2s ease;
     box-shadow: 0 10px 25px rgba(26, 86, 219, 0.3);
 
@@ -324,7 +401,7 @@ nav a:hover {
 }
 
 .featured-title {
-    font-family: 'Inter', sans-serif;
+    font-family: 'MomoTrustDisplay', sans-serif;
     font-weight: 800;
     font-style: normal;
     font-size: 3.5rem;
@@ -377,7 +454,7 @@ nav a:hover {
 
 .overlap-text-content {
     background-color: #EEF2FF;
-    padding: 60px 40px 60px 40px;
+    padding: 60px 120px 60px 40px;
     /* Flat right edge creates seamless tuck feeling */
     border-radius: 30px 0 0 30px;
 
@@ -442,7 +519,7 @@ nav a:hover {
 }
 
 .wedo-title {
-    font-family: 'Inter', sans-serif;
+    font-family: 'MomoTrustDisplay', sans-serif;
     font-size: 3.5rem;
     font-weight: 800;
     line-height: 1.1;
@@ -467,6 +544,14 @@ nav a:hover {
     flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 20px;
+}
+
+.project-tags:not(.reversed-overlap .project-tags) {
+    padding-right: 50px;
+}
+
+.reversed-overlap .project-tags {
+    padding-left: 50px;
 }
 
 .tag-pill {
@@ -505,6 +590,7 @@ nav a:hover {
         /* Right Align Text */
         text-align: right;
         align-items: flex-end;
+        padding: 60px 40px 60px 140px;
     }
 }
 
@@ -622,7 +708,7 @@ nav a:hover {
     }
 
     /* Hide duplicates (Set 2 and 3) on mobile */
-    .cards-grid .app-card:nth-child(n+4) {
+    .cards-grid .app-card:nth-child(n+6) {
         display: none;
     }
 
@@ -643,8 +729,8 @@ nav a:hover {
     }
 
     100% {
-        /* Move exactly the width of one set (3 cards * (300px + 24px gap)) = 972px */
-        transform: translateX(-972px);
+        /* Move exactly the width of one set (5 cards * (300px + 24px gap)) = 1620px */
+        transform: translateX(-1620px);
     }
 }
 
@@ -748,26 +834,22 @@ nav a:hover {
 /* Google Play Button */
 .btn-play-store {
     margin-top: auto;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background-color: #000;
-    color: #fff;
-    padding: 10px 16px;
-    border-radius: 12px;
-    font-size: 0.85rem;
-    font-weight: 500;
+    display: inline-block;
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
     text-decoration: none;
-    transition: background-color 0.2s, transform 0.2s;
+    transition: transform 0.2s;
     width: fit-content;
 }
 
 .btn-play-store:hover {
-    background-color: #222;
+    background-color: transparent;
     transform: translateY(-2px);
 }
 
-.play-icon-sm {
+.btn-play-store img {
+    height: 40px;
     display: block;
 }
 
@@ -838,10 +920,11 @@ nav a:hover {
 }
 
 .skills-grid-layout {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 60px;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
     position: relative;
     text-align: left;
@@ -875,26 +958,14 @@ nav a:hover {
     gap: 8px;
     transition: transform 0.1s linear, background 0.3s ease, box-shadow 0.3s ease;
     backdrop-filter: blur(5px);
-    cursor: grab;
-    user-select: none;
-    touch-action: none;
+    cursor: default;
     position: relative;
 }
 
 .skill-pill:hover {
     background: rgba(255, 255, 255, 0.25);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.skill-pill:active {
-    cursor: grabbing;
-}
-
-.skill-pill.is-dragging {
-    background: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    z-index: 100;
-    cursor: grabbing;
+    transform: translateY(-2px);
 }
 
 /* =========================================
@@ -1002,6 +1073,101 @@ nav a:hover {
     cursor: pointer;
     transition: transform 0.3s ease;
     margin-bottom: 10px;
+}
+
+/* --- NEW FOOTER STYLES --- */
+.email-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.email-copy-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #fff;
+    padding: 12px 24px;
+    border-radius: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+    margin: 0;
+    /* Margin handled by container */
+}
+
+.email-copy-wrapper:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.email-copy-wrapper:active {
+    transform: translateY(0);
+}
+
+.email-text {
+    font-weight: 600;
+    color: #1a56db;
+    font-size: 1rem;
+}
+
+.copy-icon {
+    display: flex;
+    color: #666;
+}
+
+.copy-tooltip {
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+}
+
+.copy-tooltip.show {
+    opacity: 1;
+}
+
+.social-links-row {
+    padding-top: 30px;
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icon-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.social-icon-btn:hover {
+    background-color: #1a56db;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(26, 86, 219, 0.25);
 }
 
 .email-gif-wrapper:hover {
@@ -1161,7 +1327,9 @@ nav a:hover {
     }
 
     .hero-title {
-        font-size: 1.8rem;
+        font-size: 3.5rem;
+        /* Increased from 1.8rem for iPhone SE */
+        line-height: 1.1;
     }
 
     header {
@@ -1170,6 +1338,13 @@ nav a:hover {
 }
 
 
+
+/* --- MID-SIZE DESKTOP (1100px - 1400px) --- */
+@media (min-width: 1101px) and (max-width: 1400px) {
+    .wedo-title {
+        font-size: 2.5rem;
+    }
+}
 
 /* --- RESPONSIVE / MOBILE FIXES --- */
 @media (max-width: 1100px) {
@@ -1226,7 +1401,7 @@ nav a:hover {
         width: 95%;
         z-index: 1;
         margin: 0;
-        margin-top: -60px;
+        margin-top: -30px;
 
         box-shadow: none;
     }
@@ -1341,4 +1516,28 @@ nav a:hover {
         border-radius: 10px;
         /* Slight radius for image itself if needed */
     }
+}
+
+/* Hero Email Copy Style */
+.hero-email-copy {
+    cursor: pointer;
+    border-bottom: 1px dashed rgba(5, 10, 48, 0.3);
+    transition: all 0.2s;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.hero-email-copy:hover {
+    color: #4f46e5;
+    border-bottom-style: solid;
+}
+
+.hero-email-copy .copy-tooltip {
+    top: -40px;
+    /* Adjust tooltip position for hero context */
+    background-color: #000;
+    z-index: 100;
+    /* Ensure it appears above other elements */
 }

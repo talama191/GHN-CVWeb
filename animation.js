@@ -1,62 +1,6 @@
 window.addEventListener('load', () => {
 
-    // --- DRAGGABLE SKILLS LOGIC ---
-    const skills = document.querySelectorAll('.skill-pill');
-
-    skills.forEach(skill => {
-        let isDragging = false;
-        let startX, startY;
-        let initialTranslateX = 0;
-        let initialTranslateY = 0;
-        let currentTranslateX = 0;
-        let currentTranslateY = 0;
-
-        const dragStart = (e) => {
-            if (e.type === 'touchstart') {
-                startX = e.touches[0].clientX - initialTranslateX;
-                startY = e.touches[0].clientY - initialTranslateY;
-            } else {
-                startX = e.clientX - initialTranslateX;
-                startY = e.clientY - initialTranslateY;
-            }
-            isDragging = true;
-            skill.classList.add('is-dragging');
-        };
-
-        const drag = (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
-            let currentX, currentY;
-            if (e.type === 'touchmove') {
-                currentX = e.touches[0].clientX;
-                currentY = e.touches[0].clientY;
-            } else {
-                currentX = e.clientX;
-                currentY = e.clientY;
-            }
-            currentTranslateX = currentX - startX;
-            currentTranslateY = currentY - startY;
-            setTranslate(currentTranslateX, currentTranslateY, skill);
-        };
-
-        const dragEnd = () => {
-            initialTranslateX = currentTranslateX;
-            initialTranslateY = currentTranslateY;
-            isDragging = false;
-            skill.classList.remove('is-dragging');
-        };
-
-        const setTranslate = (xPos, yPos, el) => {
-            el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
-        };
-
-        skill.addEventListener('mousedown', dragStart);
-        skill.addEventListener('touchstart', dragStart, { passive: false });
-        document.addEventListener('mousemove', drag);
-        document.addEventListener('touchmove', drag, { passive: false });
-        document.addEventListener('mouseup', dragEnd);
-        document.addEventListener('touchend', dragEnd);
-    });
+    // --- DRAGGABLE SKILLS LOGIC REMOVED ---
 
     // --- SCROLL ANIMATION OBSERVER ---
     // Selects elements with .scroll-hidden (added in CSS)
@@ -159,3 +103,23 @@ window.addEventListener('load', () => {
         updateDragBar();
     }
 });
+
+function copyEmail(tooltipId = 'copyTooltip') {
+    const email = "nguyenvn12n@gmail.com";
+    navigator.clipboard.writeText(email).then(() => {
+        const tooltip = document.getElementById(tooltipId);
+        if (!tooltip) return;
+
+        const originalText = tooltip.textContent;
+        tooltip.textContent = "Copied!";
+        tooltip.classList.add("show");
+
+        // Reset after 2 seconds
+        setTimeout(() => {
+            tooltip.classList.remove("show");
+            setTimeout(() => tooltip.textContent = originalText, 200);
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+    });
+}
