@@ -29,7 +29,7 @@ html {
 }
 
 body {
-    font-family: 'MomoTrustDisplay', Helvetica, Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: #F7F3EB;
     color: #333;
     line-height: 1.6;
@@ -112,7 +112,9 @@ nav a {
     font-weight: 600;
     margin-left: 30px;
     transition: all 0.2s ease;
-    font-family: 'Inter', sans-serif;
+    margin-left: 30px;
+    transition: all 0.2s ease;
+    font-family: 'MomoTrustDisplay', sans-serif;
 }
 
 .nav-btn:hover {
@@ -163,6 +165,7 @@ nav a:not(.nav-btn):hover {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     margin-bottom: 25px;
     border: 1px solid rgba(255, 255, 255, 0.4);
+    font-family: 'Inter', sans-serif;
 }
 
 /* Pulsing Status Light */
@@ -241,6 +244,7 @@ nav a:not(.nav-btn):hover {
 }
 
 .hero-personal-info {
+    font-family: 'Inter', sans-serif;
     max-width: 650px;
     margin: 0 auto;
     background: #fff;
@@ -309,7 +313,8 @@ nav a:not(.nav-btn):hover {
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
-    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-family: 'MomoTrustDisplay', sans-serif;
     /* REVERT: Clean font */
     transition: all 0.2s ease;
     box-shadow: 0 10px 25px rgba(26, 86, 219, 0.3);
@@ -359,6 +364,7 @@ nav a:not(.nav-btn):hover {
     font-size: 1rem;
     border: 2px solid #e5e7eb;
     transition: all 0.2s ease;
+    font-family: 'MomoTrustDisplay', sans-serif;
 }
 
 .btn-hero-outline:hover {
@@ -379,6 +385,7 @@ nav a:not(.nav-btn):hover {
     font-size: 1rem;
     padding: 10px 20px;
     transition: color 0.2s;
+    font-family: 'MomoTrustDisplay', sans-serif;
 }
 
 .btn-hero-secondary:hover {
@@ -401,7 +408,6 @@ nav a:not(.nav-btn):hover {
 }
 
 .featured-title {
-    font-family: 'MomoTrustDisplay', sans-serif;
     font-weight: 800;
     font-style: normal;
     font-size: 3.5rem;
@@ -434,8 +440,13 @@ nav a:not(.nav-btn):hover {
     padding-bottom: 40px;
 }
 
+.btn-download {
+    font-family: 'MomoTrustDisplay', sans-serif;
+}
+
 /* 1. TEXT CONTAINER (Left, Tucked Behind) */
 .overlap-text-content-container {
+    font-family: 'Inter', sans-serif;
     /* Spans approx 40% (Cols 1-6) */
     grid-column: 1 / 7;
     grid-row: 1;
@@ -445,7 +456,7 @@ nav a:not(.nav-btn):hover {
     display: flex;
     flex-direction: column;
     /* Important: Center it vertically so it tucks in the MIDDLE */
-    align-self: center;
+    align-self: stretch;
     justify-content: center;
 
     /* Ensure it doesn't stretch to full height if visual is taller */
@@ -461,7 +472,7 @@ nav a:not(.nav-btn):hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 480px;
+    min-height: max(480px, 60%);
     width: 100%;
 
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05);
@@ -477,7 +488,8 @@ nav a:not(.nav-btn):hover {
 
     width: 100%;
     border-radius: 30px;
-    height: 600px;
+    min-height: 600px;
+    height: auto;
     /* Fixed height for the hero composition */
     position: relative;
     overflow: visible;
@@ -496,7 +508,8 @@ nav a:not(.nav-btn):hover {
 
 .visual-full-image {
     width: 100%;
-    height: 100%;
+    height: auto;
+    max-width: none;
     object-fit: cover;
     display: block;
     transition: transform 0.5s ease;
@@ -519,7 +532,6 @@ nav a:not(.nav-btn):hover {
 }
 
 .wedo-title {
-    font-family: 'MomoTrustDisplay', sans-serif;
     font-size: 3.5rem;
     font-weight: 800;
     line-height: 1.1;
@@ -903,6 +915,7 @@ nav a:not(.nav-btn):hover {
    SKILLS SECTION (DRAGGABLE)
    ========================================= */
 .skills-section {
+    font-family: 'Inter', sans-serif;
     background: linear-gradient(135deg, #050A30 0%, #1a255e 100%);
     color: white;
     border-radius: 30px;
@@ -952,6 +965,7 @@ nav a:not(.nav-btn):hover {
         flex-direction: row;
         gap: 60px;
         align-items: flex-start;
+        justify-content: center;
     }
 }
 
@@ -969,13 +983,14 @@ nav a:not(.nav-btn):hover {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding-bottom: 15px;
     pointer-events: none;
-    font-family: 'MomoTrustDisplay', sans-serif;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
 }
 
 .skills-card-grid {
-    display: grid;
-    /* Slightly wider cards for better breathing room */
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 24px;
 }
 
@@ -990,7 +1005,11 @@ nav a:not(.nav-btn):hover {
     gap: 18px;
     transition: transform 0.2s, background 0.2s;
     cursor: default;
-    height: 100%;
+    height: 160px;
+    /* Fixed height */
+    width: 150px;
+    /* Fixed width */
+    justify-content: center;
 }
 
 .skill-card:hover {
@@ -1299,9 +1318,18 @@ nav a:not(.nav-btn):hover {
         gap: 15px;
     }
 
+    .marquee-container .featured-title {
+        margin-top: 30px;
+    }
+
     nav {
         width: 100%;
         text-align: center;
+    }
+
+    .nav-btn {
+        margin-left: 0;
+        margin-top: 15px;
     }
 
     nav a {
