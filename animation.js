@@ -14,7 +14,7 @@ window.addEventListener('load', () => {
             }
         });
     }, {
-        threshold: 0.4 // Animation triggers when 20% of the element is visible
+        threshold: 0.25 // Animation triggers when 20% of the element is visible
     });
 
     animatedElements.forEach(el => observer.observe(el));
