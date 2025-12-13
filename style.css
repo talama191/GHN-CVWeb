@@ -428,16 +428,20 @@ nav a:not(.nav-btn):hover {
 /* --- OVERLAP CARD LOGIC --- */
 .featured-overlap-card {
     display: grid;
-    /* 12 Column Grid for precise control */
+    /* 12-column grid for precise overlap control */
     grid-template-columns: repeat(12, 1fr);
     align-items: center;
-    /* Ensures content is centered vertically on Desktop */
+    position: relative;
+    /* Clean container */
+    background: transparent;
+    padding-bottom: 40px;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
     max-width: 95%;
     /* Increased to use more available space */
     width: 100%;
     margin: 0 auto;
-    position: relative;
-    padding-bottom: 40px;
 }
 
 .btn-download {
